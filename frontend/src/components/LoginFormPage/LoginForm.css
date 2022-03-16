@@ -34,7 +34,7 @@
   object-fit: cover;
 }
 
-p {
+.left_container_logo p {
   font-weight: 550;
   color: #f05537;
   font-size: 19pt;
@@ -42,7 +42,7 @@ p {
   margin-right: 200px;
 }
 
-h1 {
+.left_container_logo h1 {
   font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;

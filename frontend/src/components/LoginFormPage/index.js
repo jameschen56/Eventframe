@@ -51,13 +51,13 @@ function LoginFormPage() {
             ))}
           </ul>
           <label>
-            Email Address
+            Email address
             <div className="form_input">
               <input
                 type="text"
                 value={credential}
                 onChange={(e) => setCredential(e.target.value)}
-                placeholder="Email Address"
+                placeholder="Email sddress"
                 required
               />
             </div>
