@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllEvents } from "../../../store/event";
+import './AllEvents.css'
 
 const AllEvents = () => {
   const [eventList, setEventList] = useState([]);
@@ -21,8 +22,8 @@ const AllEvents = () => {
   }, [events]);
 
   return (
-    <main>
-      <h1>All Events</h1>
+    <main className="events-main">
+      <h1>Popular in Online Events</h1>
       <div className="events-content">
         {eventList.length &&
           eventList.map((event) => (
