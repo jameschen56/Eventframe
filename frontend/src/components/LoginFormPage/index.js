@@ -57,7 +57,7 @@ function LoginFormPage() {
                 type="text"
                 value={credential}
                 onChange={(e) => setCredential(e.target.value)}
-                placeholder="Email sddress"
+                placeholder="Email address"
                 required
               />
             </div>
