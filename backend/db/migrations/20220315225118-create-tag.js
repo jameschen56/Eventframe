@@ -9,11 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       categoryId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references: { model: "Categories"}
       },
       eventId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: { model: "Events"}
       },
       createdAt: {
         allowNull: false,
