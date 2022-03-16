@@ -217,6 +217,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('Events', null, {});
-  }
+     return queryInterface.bulkDelete('Events', null, {});
+    }
 };
