@@ -132,13 +132,11 @@ module.exports = {
     // Fashion
     {
       id: 10,
-      title: "Charlotte Girl Tribe Pop Up",
-      description: "Girl Tribe Pop Up will return to the Charlotte Convention Center on Saturday, April 30th for a full day of shopping showcasing your women-owned brands! \n"+
-      "\n"+
-      "Attendees can expect an expertly curated collection of 100+ women-led businesses including premiere boutiques, clothing designers, jewelers, artists and makers that come together to bring you the ultimate day of shopping, one-of-a-kind activations, lots of fun photo moments and so much more.",
-      imageUrl: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F202667819%2F348252114065%2F1%2Foriginal.20211218-154032?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=97%2C0%2C626%2C313&s=7a194ec4d9eb9131816646de3b9eac46",
+      title: "EVOLVE Spring Fashion Show",
+      description: "EVOLVE is back this season with a runway and pop up event hosted by The Aveda Arts & Sciences Institute featuring all local MN designers. This season's designers are showcasing a mix of ready-to-wear, swimwear and couture that will be immediately be available for purchase right after the show. We are excited to close out the Spring FWMN season with this premier fashion event.",
+      imageUrl: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F237632079%2F271479713962%2F1%2Foriginal.20220227-231935?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=ecad2dd04b99c280f733cf609d149d55",
       eventDate: "4/30/2022",
-      location: "501 South College Street Charlotte, NC 28202",
+      location: "400 Central Avenue Southeast Minneapolis, MN 55414",
       userId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
