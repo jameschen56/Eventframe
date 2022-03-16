@@ -1,12 +1,13 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator')
+const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
+const { requireAuth } = require('../../utils/auth')
 const { Event } = require('../../db/models')
 const router = express.Router()
 
 
-const validateCreatingEvent = [
+const validateEvent = [
     check('title')
       .exists({ checkFalsy: true })
       .withMessage('Please provide an event title.'),
@@ -30,29 +31,58 @@ const validateCreatingEvent = [
       .withMessage('Password provide a longitude'),
 ]
 
-// get all events 
+// ---------------- get all events -------------------
 router.get('/', asyncHandler(async(req, res) => {
     const events = await Event.findAll();
     console.log('333333333333333')
     return res.json(events)
 }))
 
-// get one event
+// ------------------ get one event -------------------
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
     let eventId = parseInt(req.params.id, 10);
-    console.log('%%%%%%%%%%%%%%%%%%%%%%%', eventId)
     let event = await Event.findByPk(eventId);
-    console.log('!!!!!!!!!!!!!!!!!!!!')
 
     return res.json(event);
 }));
 
-// create an event
-router.post('/', validateCreatingEvent, asyncHandler(async(req, res) => {
-    const newEvent = await Event.create(req.body);
-  
-    return res.redirect(`${req.baseUrl}/${newEvent.id}/detail`);
+// --------------------- create an event---------------------
+router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+
+  const { id } = req.user;
+  const { title, description, imageUrl, eventDate, location, lat, lng } = req.body;
+
+  const validateErrors = validationResult(req);
+  if (validateErrors.isEmpty()) {
+      const event = await Event.create({
+          title,
+          description,
+          imageUrl,
+          eventDate,
+          location,
+          lat,
+          lng,
+          userId: id
+      });
+      res.json(event);
+  }
+  else {
+      return res.json(validateErrors)
+  }
+}));
+
+
+// ------------------ delete an event -------------------
+router.delete('/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
+  const eventId = parseInt(req.params.id, 10);
+  const event = await Event.findByPk(eventId);
+  const userId = event.userId;
+  const { id } = req.user;
+  if (id === userId) {
+      await event.destroy();
+      return res.json()
+  }
 }))
 
 module.exports = router
