@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { login } from '../../store/session'
 import "./LoginForm.css";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [emailAddress, setEmailAddress] = useState("");
+  const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -16,7 +17,7 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ emailAddress, password })).catch(
+    return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -24,11 +25,25 @@ function LoginFormPage() {
     );
   };
 
+  const demoLogin = () => (
+    <button
+      className="demo-btn"
+      onClick={(e) => {
+        setCredential("demo@user.io");
+        setPassword("password");
+      }}
+    >
+      Try Demo
+    </button>
+  );
+
   return (
     <div className="login_container">
       <div className="left_container">
-        <p>eventframe</p>
-        <h1>Log In</h1>
+        <div className="left_container_logo">
+          <p>eventframe</p>
+          <h1>Log In</h1>
+        </div>
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => (
@@ -37,19 +52,19 @@ function LoginFormPage() {
           </ul>
           <label>
             Email Address
-            <div className='form_input'>
+            <div className="form_input">
               <input
                 type="text"
-                value={emailAddress}
-                onChange={(e) => setEmailAddress(e.target.value)}
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
                 placeholder="Email Address"
                 required
               />
             </div>
           </label>
-          <label >
+          <label>
             Password
-            <div className='form_input'>
+            <div className="form_input">
               <input
                 type="password"
                 value={password}
@@ -59,7 +74,10 @@ function LoginFormPage() {
               />
             </div>
           </label>
-          <button type="submit" className="login-btn">Log in</button>
+          <button type="submit" className="login-btn">
+            Log in
+          </button>
+          {demoLogin()}
         </form>
       </div>
       <div className="right_container">

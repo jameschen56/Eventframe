@@ -23,6 +23,7 @@
   align-self: stretch;
 }
 
+
 .right_container {
   width: 50vw;
 }
@@ -34,9 +35,11 @@
 }
 
 p {
+  font-weight: 550;
   color: #f05537;
   font-size: 19pt;
   font-family: sans-serif;
+  margin-right: 200px;
 }
 
 h1 {
@@ -46,6 +49,7 @@ h1 {
   font-size: 42px;
   letter-spacing: 1px;
   color: var(--eds-ui-900,#1e0a3c);;
+  margin-right: 200px;
 }
 
 form {
@@ -56,7 +60,7 @@ form {
 }
 
 .form_input input {
-    width: 320px;
+    width: 340px;
     padding: 15px;
     margin: 5px 0 22px;
     display: inline-block;
@@ -75,6 +79,21 @@ form {
     width: 100%;
     border: none;
     background-color: #d1410c;
+    cursor: pointer;
+}
+
+.demo-btn {
+    display: inline-block;
+    text-align: center;
+    background-color: black ;
+    color: white;
+    font-size: 15px;
+    border-radius: 4px;
+    height: 45px;
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 label {
