@@ -11,6 +11,7 @@ const SingleEvent = () => {
 
   const event = useSelector((state) => state.event[id]);
   const user_Id = useSelector((state) => state.session.user?.id);
+  console.log('22222222222', event)
 
   useEffect(() => {
     dispatch(getSingleEvent(id));
@@ -24,7 +25,7 @@ const SingleEvent = () => {
 
   return (
     <div className="event_detail-container">
-      <div className="event">
+      <div className="event-info">
         <div className="event-image">
           <img
             width={350}
@@ -37,11 +38,14 @@ const SingleEvent = () => {
             }
           />
         </div>
-        <p>{event?.title}</p>
-        <p>Date: {event?.eventDate}</p>
-        <p>Location: {event?.location}</p>
-        <h2>About this event</h2>
-        <p>{event?.description}</p>
+        <div>{event?.title}</div>
+        <h3>Date and Time</h3>
+        <div>Date: {event?.eventDate}</div>
+        <div>Location: {event?.location}</div>
+        <div>
+          <h3>About this Event</h3>
+          <div>{event?.description}</div>
+        </div>
       </div>
       <div className="event-btn-container">
         {user_Id === event.userId && <EditEventModal />}
