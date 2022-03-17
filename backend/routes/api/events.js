@@ -34,7 +34,7 @@ const validateEvent = [
 // ---------------- get all events -------------------
 router.get('/', asyncHandler(async(req, res) => {
     const events = await Event.findAll();
-    console.log('333333333333333')
+    
     return res.json(events)
 }))
 
@@ -74,10 +74,12 @@ router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) =>
 
 
 // ------------------ delete an event -------------------
-router.delete('/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
+router.delete('/delete/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
   const eventId = parseInt(req.params.id, 10);
   const event = await Event.findByPk(eventId);
   const userId = event.userId;
+  console.log('TTTTTTTTTTTT', userId)
+  console.log('XXXXXXXXXXXX', id)
   const { id } = req.user;
   if (id === userId) {
       await event.destroy();
