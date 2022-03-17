@@ -114,7 +114,8 @@ function SignupFormPage() {
         <img
           alt="right_banner"
           className="right_img"
-          src="https://cdn.evbstatic.com/s3-build/perm_001/530d34/django/images/login/lateral-image-2.jpg"
+          src='https://cdn.evbstatic.com/s3-build/perm_001/530d34/django/images/login/lateral-image-2.jpg'
+          crossorigin="anonymous"
         ></img>
       </div>
     </div>
