@@ -22,13 +22,13 @@ const validateEvent = [
       .withMessage('Please provide a date.'),
     check('location')
       .exists({ checkFalsy: true })
-      .withMessage('Please provide a start time.'),
-    check('lat')
-      .exists({ checkFalsy: true })
-      .withMessage('Password provide an latitude.'),
-    check('lng')
-      .exists({ checkFalsy: true })
-      .withMessage('Password provide a longitude'),
+      .withMessage('Please provide a location.'),
+    // check('lat')
+    //   .exists({ checkFalsy: true })
+    //   .withMessage('Password provide an latitude.'),
+    // check('lng')
+    //   .exists({ checkFalsy: true })
+    //   .withMessage('Password provide a longitude'),
 ]
 
 // ---------------- get all events -------------------

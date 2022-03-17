@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditEvent from "./EditEvent";
 
-import './EditProduct.css'
-
-const EditProductModal = () => {
+const EditEventModal = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -21,4 +19,4 @@ const EditProductModal = () => {
   );
 };
 
-export default EditProductModal;
+export default EditEventModal;

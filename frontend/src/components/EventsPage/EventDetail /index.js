@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getSingleEvent, deleteSingleEvent } from "../../../store/event";
+import EditEventModal from "../EditEvent";
 
 const SingleEvent = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const SingleEvent = () => {
           <img
             width={350}
             height={450}
-            alt={event?.titl}
+            alt={event?.title}
             src={
               event?.imageUrl
                 ? event?.imageUrl
@@ -43,6 +44,7 @@ const SingleEvent = () => {
         <p>{event?.description}</p>
       </div>
       <div className="event-btn-container">
+        {user_Id === event.userId && <EditEventModal />}
         {user_Id === event.userId && (
           <button className="delete-event-btn" onClick={handleDelete}>
             Delete

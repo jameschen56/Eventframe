@@ -56,13 +56,15 @@ export const getSingleEvent = (id) => async (dispatch) => {
 };
 
 export const editOneEvent = (event) => async (dispatch) => {
-  const response = await fetch(`/api/products/${event.id}/edit`, {
+  
+  const response = await csrfFetch(`/api/events/${event.id}/edit`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(event),
   });
   if (response.ok) {
     const data = await response.json();
+    console.log('@@@@@@@@@@@@@', data)
     dispatch(editEvent(data));
     return data;
   }
@@ -95,7 +97,7 @@ const eventsReducer = (state = {}, action) => {
       return newState;
     case EDIT_EVENT:
       newState = {...state};
-      newState[action.product.id] = action.product;
+      newState[action.event.id] = action.event;
       return newState;
     case DELETE_EVENT:
       newState = { ...state };
