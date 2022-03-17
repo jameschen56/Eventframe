@@ -66,7 +66,7 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 }))
 
 // --------------------- create an event---------------------
-router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
 
   const { id } = req.user;
   const { title, description, imageUrl, eventDate, location, lat, lng } = req.body;
