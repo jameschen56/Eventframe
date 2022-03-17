@@ -47,6 +47,24 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json(event);
 }));
 
+// ---------------------update one event---------------------
+router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+    const validateErrors = validationResult(req);
+    const { id } = req.user;
+    const eventId = parseInt(req.params.id, 10);
+    const eventToUpdate = await Event.findByPk(eventId);
+    const userId = eventToUpdate.userId;
+    const { title, description, imageUrl, eventDate, location} = req.body;
+    if (id === userId) {
+        if (validateErrors.isEmpty()) {
+            const event = await eventToUpdate.update({title, description, imageUrl, eventDate, location});
+            return res.json(event)
+        } else {
+            res.json(validateErrors)
+        }
+    }
+}))
+
 // --------------------- create an event---------------------
 router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
 
@@ -72,14 +90,13 @@ router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) =>
   }
 }));
 
-
 // ------------------ delete an event -------------------
 router.delete('/delete/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
   const eventId = parseInt(req.params.id, 10);
+
   const event = await Event.findByPk(eventId);
   const userId = event.userId;
-  console.log('TTTTTTTTTTTT', userId)
-  console.log('XXXXXXXXXXXX', id)
+  
   const { id } = req.user;
   if (id === userId) {
       await event.destroy();

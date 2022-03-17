@@ -55,9 +55,22 @@ export const getSingleEvent = (id) => async (dispatch) => {
   }
 };
 
+export const editOneEvent = (event) => async (dispatch) => {
+  const response = await fetch(`/api/products/${event.id}/edit`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(event),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editEvent(data));
+    return data;
+  }
+};
+
 export const deleteSingleEvent = (id) => async (dispatch) => {
   console.log("!!!!!!!!!!!!!!", id);
-  const response = await fetch(`/api/events/delete/${id}`, {
+  const response = await csrfFetch(`/api/events/delete/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
@@ -79,6 +92,10 @@ const eventsReducer = (state = {}, action) => {
     case GET_EVENT:
       newState = { ...state };
       newState[action.event.id] = action.event;
+      return newState;
+    case EDIT_EVENT:
+      newState = {...state};
+      newState[action.product.id] = action.product;
       return newState;
     case DELETE_EVENT:
       newState = { ...state };
