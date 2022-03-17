@@ -23,7 +23,7 @@ const AllEvents = () => {
 
   return (
     <main className="events-main">
-      <h1>Popular in Online Events</h1>
+      <h1>Popular in United States</h1>
       <div className="events-content">
         {eventList.length &&
           eventList.map((event) => (
