@@ -23,6 +23,18 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      startTime: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+      },
+      endTime: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+      },
       lat: {
         type: Sequelize.DECIMAL
       },

@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllEvents from "./components/EventsPage/AllEvents";
+import SingleEvent from "./components/EventsPage/EventDetail ";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/" exact={true}>
             <AllEvents />
+          </Route>
+          <Route path="/events/:id" exact={true}>
+            <SingleEvent />
           </Route>
   
         </Switch>

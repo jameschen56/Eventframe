@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      name: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        validate: {
+          len: [2, 100],
+        },
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
