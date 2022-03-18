@@ -11,7 +11,7 @@ const SingleEvent = () => {
 
   const event = useSelector((state) => state.event[id]);
   const user_Id = useSelector((state) => state.session.user?.id);
-  console.log('22222222222', event)
+  console.log('22222222222', user_Id, event.userId)
 
   useEffect(() => {
     dispatch(getSingleEvent(id));
@@ -21,6 +21,10 @@ const SingleEvent = () => {
     e.preventDefault();
     console.log('TTTTTTTTTT', id)
     dispatch(deleteSingleEvent(id))
+    .catch(async err => {
+      const errors = await err.json()
+      console.log('-----------------' , errors)
+    })
     history.push('/')
   }
 

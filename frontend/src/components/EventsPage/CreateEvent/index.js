@@ -27,7 +27,7 @@ const CreateEvent = () => {
     setErrorValidator(errors);
   }, [title, imageUrl, description, eventDate, location, dispatch]);
 
-  const newEventSubmit = async (e) => {
+  const newEventSubmit = (e) => {
     e.preventDefault();
     const payload = {
       user_Id: user.id,
@@ -37,10 +37,13 @@ const CreateEvent = () => {
       eventDate,
       location,
     };
-    const newEvent = await dispatch(addOneEvent(payload));
-    if (newEvent) {
-      history.push(`/`);
-    }
+    dispatch(addOneEvent(payload))
+    .then(res => { if(res) history.push('/') })
+    .catch(async err => {
+      const errors = await err.json()
+      console.log('SSSSSSS' , errors)
+    })
+
   };
 
   return (
@@ -78,7 +81,7 @@ const CreateEvent = () => {
           <label> Description </label>
           <textarea
             id="form-label-Date"
-            placeholder="Date"
+            placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="create_event_description_input-bar"
@@ -88,6 +91,7 @@ const CreateEvent = () => {
           <label> Date </label>
           <input
             id="form-label-Date"
+            type="date"
             placeholder="Date"
             value={eventDate}
             onChange={(e) => setEventDate(e.target.value)}

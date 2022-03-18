@@ -9,18 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING(50)
       },
       description: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       imageUrl: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       eventDate: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       location: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       // price: {
@@ -42,6 +47,7 @@ module.exports = {
         type: Sequelize.DECIMAL
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: "Users" }
         

@@ -29,6 +29,7 @@ const validateEvent = [
     // check('lng')
     //   .exists({ checkFalsy: true })
     //   .withMessage('Password provide a longitude'),
+    handleValidationErrors
 ]
 
 // ---------------- get all events -------------------
@@ -67,31 +68,25 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 
 // --------------------- create an event---------------------
 router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
-  console.log('1111111111111111', req)
+  console.log('1111111111111111')
 
   const { id } = req.user;
   const { title, description, imageUrl, eventDate, location } = req.body;
-
-  const validateErrors = validationResult(req);
-  if (validateErrors.isEmpty()) {
+  console.log('77777777', id, 1)
       const event = await Event.create({
           title,
           description,
           imageUrl,
           eventDate,
           location,
-          user_Id: id
+          userId: id
       });
       console.log('###############', event)
-      res.json(event);
-  }
-  else {
-      return res.json(validateErrors)
-  }
+      return res.json(event);
 }));
 
 // ------------------ delete an event -------------------
-router.delete('/delete/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
+router.delete('/delete/:id(\\d+)', requireAuth, asyncHandler(async function (req, res) {
   const eventId = parseInt(req.params.id, 10);
 
   const event = await Event.findByPk(eventId);

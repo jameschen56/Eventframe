@@ -78,7 +78,7 @@ export const editOneEvent = (event) => async (dispatch) => {
 };
 
 export const addOneEvent = (event) => async (dispatch) => {
-  console.log('@@@@@@@@@@@@@@@', event)
+  // console.log('@@@@@@@@@@@@@@@', event)
   const response = await csrfFetch('/api/events/new', {
     method: "POST",
     headers: {

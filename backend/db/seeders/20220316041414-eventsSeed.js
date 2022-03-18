@@ -13,7 +13,6 @@ module.exports = {
    return queryInterface.bulkInsert('Events', [
      // Online 
      {
-      id: 1,
       title: "Vegan For Beginners",
       description: "More and more people are interested in vegan/plant-based eating. Some are curious, some want to get their feet wet, and others are ready to come to the V-side! *smiles* \n"+
       '\n'+ 
@@ -29,7 +28,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 2,
       title: "Fundamentals of Home Espresso",
       description: "Breville is excited to announce a VIRTUAL class - Fundamentals of Home Espresso. \n"+
       '\n'+ 
@@ -45,7 +43,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 3,
       title: "Curb Your Sugar Addiction",
       description: "Do you try to eat healthy, but find you’re unable to resist cookies, donuts, a sugar-filled latte, chips, bread or other goodies? \n"+
       '\n'+ 
@@ -62,7 +59,6 @@ module.exports = {
     },
      // Free 
      {
-      id: 4,
       title: "Trópico Tuesdays @ La Cita Bar",
       description: "With Cumbia and Reggaeton music pumping, palm trees swaying, and Hawaiian leis being passed around the club, Trópico Tuesdays is by far the best thing to do on a Tuesday night in DTLA. \n"+
       '\n'+ 
@@ -78,7 +74,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 5,
       title: "Saturday Morning Beach Yoga",
       description: "A team of creatives on a mission to light up the world. Through music, movement, sound healing & art, we create a safe space for everyone to shine. \n"+
       '\n'+ 
@@ -94,7 +89,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 6,
       title: "CUTE & RATCHET: A R&B AND RATCHET PARTY",
       description: "Join us every 2nd Saturday of the month at Paper Tiger Bar for a night of smooth R&B and also ratchet hip-hop music We have JACKJACK and SOOSH! on the turn tables all night.\n"+
       '\n'+ 
@@ -111,7 +105,6 @@ module.exports = {
     },
      // Food & Drink 
      {
-       id: 7,
        title: "626 Night Market Mini @ Downtown Santa Monica",
        description: "626 Night Market is bringing the epic flavors of our flagship summer food festivals to the Westside: Downtown Santa Monica! \n"+
        '\n'+ 
@@ -127,7 +120,7 @@ module.exports = {
        updatedAt: new Date()
      },
      {
-      id: 8,
+
       title: "DC Wine Fest! Spring Edition",
       description: "Specially curated wineries serve patrons tastings over a multi-session, all-day, all-night vino experience. You’ll have the chance to sample premium wine to your heart's content, while live entertainment keep the party lively during this one of a kind experience. Check out all these awesome participating wineries @ DCWineFest.com !",
       imageUrl: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F124149499%2F35694333470%2F1%2Foriginal.20210125-215313?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C9%2C1004%2C502&s=c64fe414faf7c50d3ebb3bfcb64713b0",
@@ -141,7 +134,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 9,
       title: "Pittsburgh Mac and Cheese Festival",
       description: "It's Here - The Cheesiesst Event Pittsburgh Has Ever Seen... Pittsburgh Mac and Cheese Festival - We're Coming to Strip District Terminal - Don't Miss If You're Cheeesay! \n"+
       "\n"+
@@ -158,7 +150,6 @@ module.exports = {
     },
     // Fashion
     {
-      id: 10,
       title: "EVOLVE Spring Fashion Show",
       description: "EVOLVE is back this season with a runway and pop up event hosted by The Aveda Arts & Sciences Institute featuring all local MN designers. This season's designers are showcasing a mix of ready-to-wear, swimwear and couture that will be immediately be available for purchase right after the show. We are excited to close out the Spring FWMN season with this premier fashion event.",
       imageUrl: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F237632079%2F271479713962%2F1%2Foriginal.20220227-231935?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=ecad2dd04b99c280f733cf609d149d55",
@@ -172,7 +163,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 11,
       title: "The Sneaker Travelers Dallas",
       description: "Sell,Buy,Trade Sneakers,Vintage Wear,Trading Cards,Collectibles & So Much More ‼",
       imageUrl: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F206304989%2F219666700054%2F1%2Foriginal.20220101-230455?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C270%2C1080%2C540&s=e065b1f2e4572dc24ce889da93b71017",
@@ -186,7 +176,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 12,
       title: "Charlotte Girl Tribe Pop Up",
       description: "Purge your closet for the season ahead, get styling tips for your new finds, and meet new women! \n"+
       "\n"+
@@ -202,7 +191,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 13,
       title: "NFTs x FASHION x NYC",
       description: "Are you a fashion designer curious about the endless utility of NFTs and how they may empower you to reshape your business model? \n"+
       "\n"+
@@ -219,7 +207,6 @@ module.exports = {
     },
     // Music
     {
-      id: 14,
       title: "Sangria Saturdays: 90's On The Patio",
       description: "Join the Sangria Saturdays family as we bring you high quality new normal entertainment while adhering to the City's Social Distancing Guidelines \n"+
       "\n"+
@@ -235,7 +222,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      id: 15,
       title: "Chickenstock Music Festival 2022",
       description: "Join us for the 16th annual Chickenstock Music Festival! It’s a fun-filled weekend for the whole family hosted by Chicken Gold Camp in Chicken Alaska on “Top of the World”. Enjoy a weekend of boot stompin’ music by Alaskan artists, locally prepared eats, delicious local craft beer, the “Peep Drop”, games, Alaskan made crafts and fun local Chicken hospitality.\n"+
       "\n"+
