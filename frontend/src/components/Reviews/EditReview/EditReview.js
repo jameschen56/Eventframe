@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editAReview } from "../../../store/reviews";
+import { updateReview } from "../../../store/reviews";
 import "./EditReview.css";
 
 const EditReviewForm = ({ onClose, reviewId }) => {
@@ -33,7 +33,7 @@ const EditReviewForm = ({ onClose, reviewId }) => {
       created_at,
     };
 
-    const updatedReview = await dispatch(editAReview(payload));
+    const updatedReview = await dispatch(updateReview(payload));
     if (updatedReview) {
       history.push(`/products/${id}`);
       onClose(false);

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAllReviews } from "../../../store/reviews";
-import { deleteAReview } from "../../../store/reviews";
+import { getReviews } from "../../../store/reviews";
+import { removeReview } from "../../../store/reviews";
 import { useHistory } from "react-router-dom";
 import EditReviewModal from "../EditReview";
 import "./Reviews.css";
@@ -10,29 +10,33 @@ import "./Reviews.css";
 const AllReviews = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  // const xxx = useSelector((state) => console.log('EEEEEE', state));
   const userId = useSelector((state) => state.session.user?.id);
-  const reviews = useSelector((state) => state.reviewsReducer);
-  const product = useSelector((state) => state.productsReducer[id]);
+  const reviews = useSelector((state) => state.review);
+  console.log('reviews', reviews)
+  const event = useSelector((state) => state.event[id]);
   const history = useHistory();
   const reviewsArr = Object.values(reviews);
+  console.log('MMMMMMMMMMMM', id)
 
   useEffect(() => {
-    dispatch(getAllReviews());
-  }, [dispatch]);
+    dispatch(getReviews(id));
+  }, [dispatch, id]);
 
   function handleReviewDelete(e, reviewId) {
     e.preventDefault();
-    dispatch(deleteAReview(reviewId));
-    history.push(`/products/${id}`);
+    dispatch(removeReview(reviewId));
+    history.push(`/events/${id}`);
   }
 
   return (
     <div className="reviews-content">
-      {reviewsArr.map((review) => {
-        if (review.product_id === product.id) {
+      <h2>Reviews</h2>
+      {reviewsArr?.map((review) => {
+        if (review.eventId === event.id) {
           return (
             <div key={review?.id} className="review-container">
-              <div className="user-name">{review.username}{" "}{review.created_at.slice(5, 17)}</div>
+              {/* <div className="user-name">{review.username}{" "}{review.created_at.slice(5, 17)}</div>
               <div className="star-rating">
                 {Array(review.rating)
                   .fill(
@@ -44,9 +48,9 @@ const AllReviews = () => {
                     <span key={idx}>{star}</span>
                   ))}
               </div>
-              <div className="date"></div>
+              <div className="date"></div> */}
               <div>{review?.review}</div>
-              {userId === review.buyer_id && (
+              {userId === review.id && (
                 <div>
                   <EditReviewModal reviewId={review?.id} />
                   <button

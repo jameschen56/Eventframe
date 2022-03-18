@@ -5,7 +5,7 @@ const {requireAuth} = require('../../utils/auth')
 
 const { User, Review} = require(`../../db/models`)
 
-router.get('/:id', asyncHandler(async(req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
     const {id} = req.params
     const reviews = await Review.findAll({
         where: {eventId: id},
@@ -14,7 +14,7 @@ router.get('/:id', asyncHandler(async(req, res) => {
     return res.json(reviews)
 }));
 
-router.post('/:id', requireAuth, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const {id} = req.params
     const {review, rating, userId} = req.body;
     const createReview = await Review.create({
@@ -32,7 +32,7 @@ router.post('/:id', requireAuth, asyncHandler(async(req, res) => {
 }));
 
 
-router.put('/:id', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const { content } = req.body;
 
     const { id } = req.params;
@@ -53,7 +53,7 @@ router.put('/:id', requireAuth, asyncHandler(async (req, res) => {
     return res.json(updatedReview)
 }));
 
-router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const {id} = req.params
     const review = await Review.findByPk(id)
 

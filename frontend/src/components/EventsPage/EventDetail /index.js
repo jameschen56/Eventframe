@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getSingleEvent, deleteSingleEvent } from "../../../store/event";
 import EditEventModal from "../EditEvent";
+import AllReviews from "../../Reviews/AllReviews";
 
 const SingleEvent = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const SingleEvent = () => {
           </button>
         )}
       </div>
+      <AllReviews />
     </div>
   );
 };
