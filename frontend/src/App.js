@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllEvents from "./components/EventsPage/AllEvents";
 import SingleEvent from "./components/EventsPage/EventDetail ";
+import CreateEvent from "./components/EventsPage/CreateEvent";
 
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
           <Route path="/events/:id" exact={true}>
             <SingleEvent />
           </Route>
-  
+          <Route path="/create-event" exact={true}>
+            <CreateEvent />
+          </Route>
         </Switch>
       )}
     </>

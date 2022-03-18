@@ -67,9 +67,10 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 
 // --------------------- create an event---------------------
 router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+  console.log('1111111111111111', req)
 
   const { id } = req.user;
-  const { title, description, imageUrl, eventDate, location, lat, lng } = req.body;
+  const { title, description, imageUrl, eventDate, location } = req.body;
 
   const validateErrors = validationResult(req);
   if (validateErrors.isEmpty()) {
@@ -79,10 +80,9 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) =>
           imageUrl,
           eventDate,
           location,
-          lat,
-          lng,
-          userId: id
+          user_Id: id
       });
+      console.log('###############', event)
       res.json(event);
   }
   else {
