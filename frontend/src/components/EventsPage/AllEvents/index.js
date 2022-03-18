@@ -23,12 +23,12 @@ const AllEvents = () => {
 
   return (
     <main className="events-main">
-      <h1>Popular in United States</h1>
+      <h2>Popular in United States</h2>
       <div className="events-content">
         {eventList.length &&
           eventList.map((event) => (
             <Link
-              key={`single_product_link_${event?.id}`}
+              key={`single_event_link_${event?.id}`}
               to={`/events/${event?.id}`}
             >
               <div className="all-events-container">

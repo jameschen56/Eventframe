@@ -10,10 +10,7 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-        <NavLink id='create-event' to='/create-event'><i className="fas fa-plus"></i>Create Event</NavLink>
-        <ProfileButton user={sessionUser} />
-      </>
+      <ProfileButton user={sessionUser} />
     );
   } else {
     sessionLinks = (

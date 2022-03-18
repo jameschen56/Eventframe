@@ -95,13 +95,14 @@ export const addOneEvent = (event) => async (dispatch) => {
 }
 
 export const deleteSingleEvent = (id) => async (dispatch) => {
-  // console.log("!!!!!!!!!!!!!!", id);
+  console.log("!!!!!!!!!!!!!!", id);
   const response = await csrfFetch(`/api/events/delete/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
     await dispatch(deleteEvent(id));
-    return response;
+    const res = await response.json()
+    return res;
   }
 };
 

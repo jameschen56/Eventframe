@@ -100,8 +100,8 @@ router.delete('/delete/:id(\\d+)', requireAuth, validateEvent, asyncHandler(asyn
   const { id } = req.user;
   if (id === userId) {
       await event.destroy();
-      return res.json()
-  }
+      return res.json("Success");
+  } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
 
 module.exports = router

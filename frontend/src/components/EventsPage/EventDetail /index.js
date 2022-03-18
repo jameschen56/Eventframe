@@ -17,10 +17,11 @@ const SingleEvent = () => {
     dispatch(getSingleEvent(id));
   }, [dispatch, id]);
 
-  async function handleDelete(e) {
+  const handleDelete = (e) => {
     e.preventDefault();
-    await dispatch(deleteSingleEvent(id));
-    history.push("/");
+    console.log('TTTTTTTTTT', id)
+    dispatch(deleteSingleEvent(id))
+    history.push('/')
   }
 
   return (
