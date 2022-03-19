@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     Event.hasMany(models.Like, {foreignKey: "eventId"});
     Event.hasMany(models.Tag, {foreignKey: "eventId"});
     Event.belongsTo(models.User, {foreignKey: 'userId'});
+    Event.hasMany(models.Review, {foreignKey: 'eventId', onDelete: "cascade", hooks: true})
   };
   return Event;
 };
