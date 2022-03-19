@@ -17,6 +17,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
 router.post('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const {id} = req.params
     const {review, rating, userId} = req.body;
+    console.log('33333333', userId)
     const createReview = await Review.create({
         review,
         rating,
@@ -33,15 +34,17 @@ router.post('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
 
 
 router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
-    const { content } = req.body;
-
+    const { review, rating } = req.body;
+    // console.log('$$$$$$$$$$$', review)
     const { id } = req.params;
+    // console.log('XXXXXXXXXX', id)
 
-    const review = await Review.findByPk(id);
+    const reviews = await Review.findByPk(id);
 
     //NOTE ADDED==>
     //here you are updating it
-    const editingReview = await review.update({ review: content });
+    const editingReview = await reviews.update({ review, rating });
+    console.log('%%%%%%%%', editingReview)
 
     //here you are finding it again and INCLUDING the user.
     const updatedReview = await Review.findByPk(editingReview.id, {

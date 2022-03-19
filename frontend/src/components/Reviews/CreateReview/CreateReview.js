@@ -7,7 +7,7 @@ import { createReview } from "../../../store/reviews";
 const CreateReview = ({ onClose }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const user = useSelector((state) => state.session.user?.id);
+  const user = useSelector((state) => state.session.user);
   const event = useSelector((state) => state.event[id]);
   const history = useHistory();
 
@@ -26,6 +26,7 @@ const CreateReview = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
+      eventId: id,
       userId: user.id,
       review,
       rating,

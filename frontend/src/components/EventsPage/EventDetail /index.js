@@ -10,29 +10,42 @@ const SingleEvent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
-
+  const eventId = +id
+  console.log('XXXXXXXXX', id)
+  console.log('----------', eventId)
+  
   const event = useSelector((state) => state.event[id]);
   const user_Id = useSelector((state) => state.session.user?.id);
   const reviews = useSelector((state) => state.review);
   const reviewsArr = Object.values(reviews);
-  const eventReviews = reviewsArr.filter(
-    (review) => review.userId === user_Id
-  );
+  const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
 
   useEffect(() => {
     dispatch(getSingleEvent(id));
   }, [dispatch, id]);
 
+  if (!event) {
+    return null;
+  }
+
   const handleDelete = (e) => {
     e.preventDefault();
-    // console.log('TTTTTTTTTT', id)
-    dispatch(deleteSingleEvent(id))
-    .catch(async err => {
-      const errors = await err.json()
+    dispatch(deleteSingleEvent(id)).catch(async (err) => {
+      const errors = await err.json();
       // console.log('-----------------' , errors)
-    })
-    history.push('/')
-  }
+    });
+    history.push("/");
+  };
+
+  // const overallRating = (productReviews) => {
+  //   return productReviews?.reduce(function (prevValue, review) {
+  //     return prevValue + review.rating;
+  //   }, 0);
+  // };
+
+  // let rating = Math.round(
+  //   overallRating(eventReviews) / eventReviews.length
+  // );
 
   return (
     <div className="event_detail-container">
@@ -67,24 +80,24 @@ const SingleEvent = () => {
         )}
       </div>
       <div className="reviews-display">
-            {user_Id && user_Id !== event?.userId && (
-              <div className="add-review-modal">
-                <CreateReview />
-              </div>
-            )}
-            {/* <h3>
-              {eventReviews?.length} Reviews{" "}
-              {rating > 0 &&
+        <h3>
+          {eventReviews?.length} Reviews{" "}
+          {/* {rating > 0 &&
                 Array(rating)
-                  .fill(
-                    <span>
-                      <i className="fas fa-star"></i>
-                    </span>
+                .fill(
+                  <span>
+                  <i className="fas fa-star"></i>
+                  </span>
                   )
-                  .map((star, idx) => <span key={idx}>{star}</span>)}
-            </h3> */}
-            <AllReviews />
+                .map((star, idx) => <span key={idx}>{star}</span>)} */}
+        </h3>
+        {user_Id !== event?.id && (
+          <div className="add-review-modal">
+            <CreateReview />
           </div>
+        )}
+        <AllReviews />
+      </div>
     </div>
   );
 };

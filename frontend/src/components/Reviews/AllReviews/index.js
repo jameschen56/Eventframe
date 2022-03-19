@@ -17,7 +17,6 @@ const AllReviews = () => {
   const event = useSelector((state) => state.event[id]);
   const history = useHistory();
   const reviewsArr = Object.values(reviews);
-  console.log('MMMMMMMMMMMM', id)
 
   useEffect(() => {
     dispatch(getReviews(id));
@@ -31,7 +30,6 @@ const AllReviews = () => {
 
   return (
     <div className="reviews-content">
-      <h2>Reviews</h2>
       {reviewsArr?.map((review) => {
         if (review.eventId === event.id) {
           return (
