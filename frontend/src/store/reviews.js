@@ -5,8 +5,7 @@ const ADD_REVIEW = 'comments/ADD_REVIEW';
 const EDIT_REVIEW = 'comments/EDIT_REVIEW';
 const DELETE_REVIEW = 'comments/DELETE_REVIEW';
 
-/***** Actions ****/
-
+// ------- action creators ---------
 const loadReviews = reviews => ({
     type: LOAD_REVIEWS,
     reviews
@@ -28,8 +27,7 @@ const deleteReview = review => ({
     review
 })
 
-/***** Thunk Actions ****/
-
+// ------- thunk action creators ---------
 export const getReviews = (id) => async dispatch => {
  
     const response = await csrfFetch(`/api/reviews/${id}`);
@@ -41,7 +39,7 @@ export const getReviews = (id) => async dispatch => {
 
 export const createReview = (review) => async dispatch => {
     console.log('@@@@@@@@@@@@@@@@', review)
-    const response = await csrfFetch(`/api/review/${review.eventId}`, {
+    const response = await csrfFetch(`/api/reviews/${review.eventId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -80,11 +78,8 @@ export const removeReview = (id) => async dispatch => {
     }
 }
 
-/***** Reducer ****/
-
-const initialState = {}
-
-const reviewReducer = (state = initialState, action) => {
+// ------- reducer ---------
+const reviewReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_REVIEWS: {
             const newAllReviews = {}
