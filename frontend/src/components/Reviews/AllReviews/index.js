@@ -30,7 +30,6 @@ const AllReviews = () => {
 
   return (
     <div className="reviews-content">
-      <h2>Reviews</h2>
       {reviewsArr?.map((review) => {
         if (review.eventId === event.id) {
           return (
