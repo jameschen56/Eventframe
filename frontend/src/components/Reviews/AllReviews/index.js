@@ -50,7 +50,7 @@ const AllReviews = () => {
               </div>
               <div className="date"></div> */}
               <div>{review?.review}</div>
-              {userId === review.id && (
+              {userId === review.userId && (
                 <div>
                   <EditReviewModal reviewId={review?.id} />
                   <button

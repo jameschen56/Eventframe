@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { addAReview } from "../../../store/reviews";
+import { createReview } from "../../../store/reviews";
 
 const CreateReview = ({ onClose }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const user = useSelector((state) => state.session.user?.id);
-  const product = useSelector((state) => state.productsReducer[id]);
+  const event = useSelector((state) => state.event[id]);
   const history = useHistory();
 
   const [review, setReview] = useState("");
@@ -26,15 +26,14 @@ const CreateReview = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      buyer_id: user.id,
-      product_id: product.id,
+      userId: user.id,
       review,
       rating,
     };
 
-    const newReview = await dispatch(addAReview(payload));
+    const newReview = await dispatch(createReview(payload));
     if (newReview) {
-      history.push(`/products/${product.id}`);
+      history.push(`/events/${event.id}`);
       onClose(false);
     }
   };

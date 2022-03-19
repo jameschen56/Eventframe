@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getSingleEvent, deleteSingleEvent } from "../../../store/event";
 import EditEventModal from "../EditEvent";
 import AllReviews from "../../Reviews/AllReviews";
+import CreateReview from "../../Reviews/CreateReview/";
 
 const SingleEvent = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,11 @@ const SingleEvent = () => {
 
   const event = useSelector((state) => state.event[id]);
   const user_Id = useSelector((state) => state.session.user?.id);
-  console.log('22222222222', user_Id, event.userId)
+  const reviews = useSelector((state) => state.review);
+  const reviewsArr = Object.values(reviews);
+  const eventReviews = reviewsArr.filter(
+    (review) => review.userId === user_Id
+  );
 
   useEffect(() => {
     dispatch(getSingleEvent(id));
@@ -20,11 +25,11 @@ const SingleEvent = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    console.log('TTTTTTTTTT', id)
+    // console.log('TTTTTTTTTT', id)
     dispatch(deleteSingleEvent(id))
     .catch(async err => {
       const errors = await err.json()
-      console.log('-----------------' , errors)
+      // console.log('-----------------' , errors)
     })
     history.push('/')
   }
@@ -61,7 +66,25 @@ const SingleEvent = () => {
           </button>
         )}
       </div>
-      <AllReviews />
+      <div className="reviews-display">
+            {user_Id && user_Id !== event?.userId && (
+              <div className="add-review-modal">
+                <CreateReview />
+              </div>
+            )}
+            {/* <h3>
+              {eventReviews?.length} Reviews{" "}
+              {rating > 0 &&
+                Array(rating)
+                  .fill(
+                    <span>
+                      <i className="fas fa-star"></i>
+                    </span>
+                  )
+                  .map((star, idx) => <span key={idx}>{star}</span>)}
+            </h3> */}
+            <AllReviews />
+          </div>
     </div>
   );
 };
