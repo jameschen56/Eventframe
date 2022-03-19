@@ -17,7 +17,6 @@ const AllReviews = () => {
   const event = useSelector((state) => state.event[id]);
   const history = useHistory();
   const reviewsArr = Object.values(reviews);
-  console.log('MMMMMMMMMMMM', id)
 
   useEffect(() => {
     dispatch(getReviews(id));

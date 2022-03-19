@@ -78,7 +78,6 @@ export const editOneEvent = (event) => async (dispatch) => {
 };
 
 export const addOneEvent = (event) => async (dispatch) => {
-  // console.log('@@@@@@@@@@@@@@@', event)
   const response = await csrfFetch('/api/events/new', {
     method: "POST",
     headers: {
@@ -88,14 +87,12 @@ export const addOneEvent = (event) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log('222222222222', data)
     dispatch(addEvent(data))
     return data
   }
 }
 
 export const deleteSingleEvent = (id) => async (dispatch) => {
-  console.log("!!!!!!!!!!!!!!", id);
   const response = await csrfFetch(`/api/events/delete/${id}`, {
     method: "DELETE",
   });

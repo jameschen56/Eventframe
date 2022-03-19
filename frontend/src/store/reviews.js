@@ -35,12 +35,12 @@ export const getReviews = (id) => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${id}`);
     if (response.ok) {
         const review = await response.json();
-        console.log('--------------------', review)
         dispatch(loadReviews(review))
     }
 };
 
 export const createReview = (review) => async dispatch => {
+    console.log('@@@@@@@@@@@@@@@@', review)
     const response = await csrfFetch(`/api/review/${review.eventId}`, {
         method: 'POST',
         headers: {
@@ -48,6 +48,7 @@ export const createReview = (review) => async dispatch => {
         },
         body: JSON.stringify(review)
     })
+    console.log('##############', response)
     
     if (response.ok) {
         const newReview = await response.json();
@@ -57,9 +58,9 @@ export const createReview = (review) => async dispatch => {
 
 export const updateReview = (review) => async dispatch => {
     const {id} = review
-    review.log('review', review)
-    console.log('id', id)
-    const response = await csrfFetch(`/api/comments/${id}`, {
+    // review.log('review', review)
+    // console.log('id', id)
+    const response = await csrfFetch(`/api/reviews/${id}`, {
         method: 'PUT',
         body: JSON.stringify(review),
     });

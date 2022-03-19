@@ -8,7 +8,6 @@ const AllEvents = () => {
   const [eventList, setEventList] = useState([]);
   const dispatch = useDispatch();
   const events = useSelector((state) => state.event);
-  // console.log('%%%%%%%%%%%%%%', events)
   // const user = useSelector((state) => state.session.user);
 
   useEffect(() => {

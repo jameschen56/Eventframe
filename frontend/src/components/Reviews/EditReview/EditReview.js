@@ -7,7 +7,7 @@ import "./EditReview.css";
 const EditReviewForm = ({ onClose, reviewId }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const reviews = useSelector((state) => state.reviewsReducer[reviewId]);
+  const reviews = useSelector((state) => state.review[id]);
   const history = useHistory();
 
   const [review, setReview] = useState(reviews?.review || "");
@@ -35,7 +35,7 @@ const EditReviewForm = ({ onClose, reviewId }) => {
 
     const updatedReview = await dispatch(updateReview(payload));
     if (updatedReview) {
-      history.push(`/products/${id}`);
+      history.push(`/events/${id}`);
       onClose(false);
     }
   };

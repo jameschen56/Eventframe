@@ -25,7 +25,6 @@ const SingleEvent = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    // console.log('TTTTTTTTTT', id)
     dispatch(deleteSingleEvent(id))
     .catch(async err => {
       const errors = await err.json()

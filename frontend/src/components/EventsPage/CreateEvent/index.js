@@ -41,7 +41,7 @@ const CreateEvent = () => {
     .then(res => { if(res) history.push('/') })
     .catch(async err => {
       const errors = await err.json()
-      console.log('SSSSSSS' , errors)
+      // console.log('SSSSSSS' , errors)
     })
 
   };

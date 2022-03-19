@@ -20,8 +20,7 @@ router.post('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const createReview = await Review.create({
         review,
         rating,
-        userId,
-        eventId: id
+        userId: id
     })
 
     const newReview = await Review.findByPk(createReview.id, {

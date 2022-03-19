@@ -68,11 +68,9 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 
 // --------------------- create an event---------------------
 router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
-  console.log('1111111111111111')
 
   const { id } = req.user;
   const { title, description, imageUrl, eventDate, location } = req.body;
-  console.log('77777777', id, 1)
       const event = await Event.create({
           title,
           description,
@@ -81,7 +79,6 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) =>
           location,
           userId: id
       });
-      console.log('###############', event)
       return res.json(event);
 }));
 
