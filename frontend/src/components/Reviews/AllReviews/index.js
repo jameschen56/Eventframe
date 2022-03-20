@@ -28,12 +28,14 @@ const AllReviews = () => {
     history.push(`/events/${id}`);
   }
 
+  
   return (
     <div className="reviews-content">
       {reviewsArr?.map((review) => {
+        console.log('888888888888', `review-${review.id}`)
         if (review.eventId === event.id) {
           return (
-            <div key={review?.id} className="review-container">
+            <div key={`review-${review.id}`} className="review-container">
               {/* <div className="user-name">{review.username}{" "}{review.created_at.slice(5, 17)}</div>
               <div className="star-rating">
                 {Array(review.rating)
@@ -50,7 +52,7 @@ const AllReviews = () => {
               <div>{review?.review}</div>
               {userId === review.userId && (
                 <div>
-                  <EditReviewModal reviewId={review?.id} />
+                  <EditReviewModal reviewId={review.id} />
                   <button
                     className="delete-review-button"
                     onClick={(e) => handleReviewDelete(e, review?.id)}

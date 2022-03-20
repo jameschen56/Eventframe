@@ -35,7 +35,7 @@ router.post('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
 
 router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const { review, rating } = req.body;
-    // console.log('$$$$$$$$$$$', review)
+    console.log('$$$$$$$$$$$', review)
     const { id } = req.params;
     console.log('XXXXXXXXXX', id)
 
