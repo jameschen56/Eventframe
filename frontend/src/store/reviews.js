@@ -50,12 +50,13 @@ export const createReview = (review) => async dispatch => {
     if (response.ok) {
         const newReview = await response.json();
         dispatch(addReview(newReview))
+        return newReview
     }
 };
 
 export const updateReview = (review) => async dispatch => {
- 
-    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+    console.log('SSSSSSSSSSSSS', review)
+    const response = await csrfFetch(`/api/reviews/${review.reviewId}`, {
         method: 'PUT',
         body: JSON.stringify(review),
     });

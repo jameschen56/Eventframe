@@ -7,16 +7,20 @@ import "./EditReview.css";
 const EditReviewForm = ({ onClose, reviewId }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const eventId = +id
+  // const eventId = +id
   const reviews = useSelector((state) => state.review);
-  const reviewsArr = Object.values(reviews);
-  const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
+  // const reviewsArr = Object.values(reviews);
+  // const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
+  // console.log('444444', reviewId)
+  // console.log('7777777777777', reviews)
+  // console.log('6666666666666', reviews[reviewId].review)
+
 
   const history = useHistory();
 
-  const [review, setReview] = useState(eventReviews?.review || "");
-  const [rating, setRating] = useState(eventReviews?.rating || "");
-  const [created_at] = useState(eventReviews?.created_at || "");
+  const [review, setReview] = useState(reviews[reviewId].review);
+  const [rating, setRating] = useState(reviews[reviewId].rating);
+  const [created_at] = useState(reviews[reviewId].created_at);
   const [errorValidator, setErrorValidator] = useState([]);
 
   useEffect(() => {
@@ -31,7 +35,7 @@ const EditReviewForm = ({ onClose, reviewId }) => {
   const handleEditReview = async (e) => {
     e.preventDefault();
     const payload = {
-      ...reviews,
+      reviewId,
       review,
       rating,
       created_at,

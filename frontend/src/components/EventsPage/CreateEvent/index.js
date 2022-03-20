@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addOneEvent } from "../../../store/event";
+import './CreateEvent.css'
 
 const CreateEvent = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const CreateEvent = () => {
 
   return (
     <div className="create-event-container">
+      <h1><i class="fas fa-info-circle"></i>Event Details</h1>
       <form className="create-event" onSubmit={newEventSubmit}>
         <ul>
           {errorValidator.map((error) => (
