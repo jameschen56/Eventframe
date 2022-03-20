@@ -10,9 +10,8 @@ function Navigation({ isLoaded }) {
   const history = useHistory();
 
   const toHomepage = () => {
-    history.push('/');
-  }
-
+    history.push("/");
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -21,28 +20,41 @@ function Navigation({ isLoaded }) {
         <NavLink id="create-event" to="/create-event">
           <i className="fas fa-plus"></i>Create Event
         </NavLink>
-        <ProfileButton sessionUser={sessionUser}/>
+        <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login" >Log In</NavLink>
+        <NavLink to="/signup" >Sign Up</NavLink>
       </>
     );
   }
-  
+
   return (
-    <div className='navbar'>
-      <div className='nav_content'>
-        <div className='navbar_left'>
-          <h1 onClick={toHomepage} style={{cursor: 'pointer'}} >eventframe</h1>
-        </div>
-        <div className='navbar_right'>
-          <div className='navbar_btn'>
-            {sessionLinks}
+    <div className="navbar">
+      <div className="nav_content">
+        <div className="navbar_left">
+          <h1 onClick={toHomepage} style={{ cursor: "pointer" }} className="eventframe_logo">
+            eventframe
+          </h1>
+          <div className="search_bar">
+            <input
+              className="events_search"
+              type="search"
+              placeholder="Search events"
+            />
+            <img
+              className="magnifier"
+              style={{ cursor: "pointer" }}
+              alt=""
+              src="../images/search.png"
+            ></img>
           </div>
+        </div>
+        <div className="navbar_right">
+          <div className="navbar_btn">{isLoaded && sessionLinks}</div>
         </div>
       </div>
     </div>
