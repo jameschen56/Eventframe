@@ -7,13 +7,13 @@ import "./EditReview.css";
 const EditReviewForm = ({ onClose, reviewId }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const eventId = +id
+  // const eventId = +id
   const reviews = useSelector((state) => state.review);
-  const reviewsArr = Object.values(reviews);
-  const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
-  console.log('444444', reviewId)
-  console.log('7777777777777', reviews)
-  console.log('6666666666666', reviews[reviewId].review)
+  // const reviewsArr = Object.values(reviews);
+  // const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
+  // console.log('444444', reviewId)
+  // console.log('7777777777777', reviews)
+  // console.log('6666666666666', reviews[reviewId].review)
 
 
   const history = useHistory();

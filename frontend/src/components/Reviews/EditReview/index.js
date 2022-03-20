@@ -12,7 +12,7 @@ const EditReviewModal = ({reviewId}) => {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditReviewForm reviewId={reviewId} onClose={() => setShowModal(false)}/>
+          <EditReviewForm reviewId={reviewId} onClose={() => setShowModal(false)} />
         </Modal>
       )}
     </>

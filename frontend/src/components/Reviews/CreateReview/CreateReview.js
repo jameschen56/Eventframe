@@ -33,6 +33,7 @@ const CreateReview = ({ onClose }) => {
     };
 
     const newReview = await dispatch(createReview(payload));
+    
     if (newReview) {
       history.push(`/events/${event.id}`);
       onClose(false);

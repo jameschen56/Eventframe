@@ -50,6 +50,7 @@ export const createReview = (review) => async dispatch => {
     if (response.ok) {
         const newReview = await response.json();
         dispatch(addReview(newReview))
+        return newReview
     }
 };
 
