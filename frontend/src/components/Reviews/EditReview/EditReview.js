@@ -7,12 +7,16 @@ import "./EditReview.css";
 const EditReviewForm = ({ onClose, reviewId }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const reviews = useSelector((state) => state.review[id]);
+  const eventId = +id
+  const reviews = useSelector((state) => state.review);
+  const reviewsArr = Object.values(reviews);
+  const eventReviews = reviewsArr.filter((review) => review.eventId === eventId);
+
   const history = useHistory();
 
-  const [review, setReview] = useState(reviews?.review || "");
-  const [rating, setRating] = useState(reviews?.rating || "");
-  const [created_at] = useState(reviews?.created_at || "");
+  const [review, setReview] = useState(eventReviews?.review || "");
+  const [rating, setRating] = useState(eventReviews?.rating || "");
+  const [created_at] = useState(eventReviews?.created_at || "");
   const [errorValidator, setErrorValidator] = useState([]);
 
   useEffect(() => {

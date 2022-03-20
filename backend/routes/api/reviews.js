@@ -37,7 +37,7 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const { review, rating } = req.body;
     // console.log('$$$$$$$$$$$', review)
     const { id } = req.params;
-    // console.log('XXXXXXXXXX', id)
+    console.log('XXXXXXXXXX', id)
 
     const reviews = await Review.findByPk(id);
 

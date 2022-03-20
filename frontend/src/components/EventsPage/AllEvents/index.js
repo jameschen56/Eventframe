@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllEvents } from "../../../store/event";
-import './AllEvents.css'
+import "./AllEvents.css";
 
 const AllEvents = () => {
   const [eventList, setEventList] = useState([]);
@@ -22,7 +22,9 @@ const AllEvents = () => {
 
   return (
     <main className="events-main">
-      <h2>Popular in United States</h2>
+      <div className="popular-logo">
+        <h3>Popular in United States</h3>
+      </div>
       <div className="events-content">
         {eventList.length &&
           eventList.map((event) => (
