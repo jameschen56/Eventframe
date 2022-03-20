@@ -22,12 +22,11 @@
   z-index: 3;
 }
 
-.eventframe_logo {
-  color: #f05537;
-  padding-left: 0px;
-  font-size: 19pt;
-  font-family: sans-serif;
-  margin-left: 10px;
+
+
+#home-a {
+  width: auto;
+  height: auto;
 }
 
 .navbar_left {
@@ -86,4 +85,13 @@
   width: 100px;
   border-radius: 3px;
 }
+
+.navbar_logo {
+  /* height: 60px; */
+  width: 140px;
+  margin-right: 10px;
+  align-self: center;
+  margin-bottom: 5px;
+}
+
 

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { useHistory } from "react-router-dom";
+import logo from "../../assets/logo.png";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -26,8 +27,8 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login" >Log In</NavLink>
-        <NavLink to="/signup" >Sign Up</NavLink>
+        <NavLink to="/login">Log In</NavLink>
+        <NavLink to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -36,9 +37,7 @@ function Navigation({ isLoaded }) {
     <div className="navbar">
       <div className="nav_content">
         <div className="navbar_left">
-          <h1 onClick={toHomepage} style={{ cursor: "pointer" }} className="eventframe_logo">
-            eventframe
-          </h1>
+            <img className='navbar_logo' onClick={toHomepage} src={logo} alt='' style={{cursor: 'pointer'}}/>
           <div className="search_bar">
             <input
               className="events_search"
