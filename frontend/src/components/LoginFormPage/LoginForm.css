@@ -46,10 +46,10 @@
   font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;
-  font-size: 42px;
+  font-size: 32px;
   letter-spacing: 1px;
   color: var(--eds-ui-900,#1e0a3c);;
-  margin-right: 200px;
+  margin-right: -25px;
 }
 
 form {

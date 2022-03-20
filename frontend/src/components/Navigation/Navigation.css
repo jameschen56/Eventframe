@@ -22,14 +22,6 @@
   z-index: 3;
 }
 
-.eventframe_logo {
-  color: #f05537;
-  padding-left: 0px;
-  font-size: 19pt;
-  font-family: sans-serif;
-  margin-left: 10px;
-}
-
 .navbar_left {
   grid-area: left;
   display: flex;
@@ -52,7 +44,7 @@
 .magnifier {
   height: 22px;
   margin-left: -40px;
-  background-color: #7E7E7E;
+  background-color: #7e7e7e;
   margin-top: 24px;
   border-radius: 7px;
 }
@@ -60,8 +52,8 @@
 .events_search {
   padding-right: 20px;
   align-self: center;
-  border: none ;
-  background-color: #F8F7Fa;
+  border: none;
+  background-color: #f8f7fa;
   border-radius: 3px;
   height: 43px;
   width: 450px;
@@ -85,5 +77,137 @@
   height: 30px;
   width: 100px;
   border-radius: 3px;
+}
+
+.navbar_logo {
+  /* height: 60px; */
+  width: 130px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.navbar_btn {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  letter-spacing: normal;
+  font-size: 16px;
+  background-color: #fff;
+
+  align-self: center;
+  margin-right: 40px;
+  display: flex;
+}
+
+.navbar_btn_create_event {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 150px;
+  border-radius: 3px;
+  margin-right: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 5px
+}
+
+.navbar_btn_login {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 100px;
+  border-radius: 3px;
+  margin-right: -15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navbar_btn_signup {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 100px;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ----------- ProfileButton -------  */
+
+.menu {
+  color: black;
+  background-color: white;
+  border: 2px solid #dbdbdb;
+  /* background-color:  #f05537; */
+  margin-bottom: 10px;
+  border-radius: 20px;
+  height: 40px;
+  width: 60px;
+  text-align: start;
+  padding-left: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.menu:hover {
+  cursor: pointer;
+}
+
+dropdown > button:hover {
+  cursor: pointer;
+}
+
+.dropdownList {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #eeeeee;
+  font-weight: 350;
+  margin: 50px 0 0 100px;
+  border-radius: 20px;
+  width: 120px;
+  height: fit-content;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.dropdownList > li  {
+  list-style-type: none;
+  transition: font-weight;
+  padding: 3px;
+}
+
+.to_username {
+  margin-left: 23px;
+}
+
+.to_username:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dropdownList > li > button {
+  margin-left: 27px;
+}
+
+.dropdownList > li > button:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout_btn {
+  background-color: transparent;
+  width: 100px;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: -25px;
+  border: none;
 }
 

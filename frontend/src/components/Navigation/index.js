@@ -1,13 +1,24 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { useHistory } from "react-router-dom";
+import logo from "../../assets/logo.png";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+
+  const toCreateEvent = () => {
+    history.push("/create-event")
+  }
+
+  const toLogin = () => {
+    history.push("/login");
+  };
+
+  const toSignup = () => {
+    history.push("/signup");
+  };
 
   const toHomepage = () => {
     history.push("/");
@@ -17,17 +28,22 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink id="create-event" to="/create-event">
-          <i className="fas fa-plus"></i>Create Event
-        </NavLink>
+        <button className='navbar_btn_create_event' onClick={toCreateEvent}> Create an event </button>
         <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login" >Log In</NavLink>
-        <NavLink to="/signup" >Sign Up</NavLink>
+          <button className="navbar_btn_login" onClick={toLogin}>
+            {" "}
+            Log In{" "}
+          </button>
+          <button className="navbar_btn_signup" onClick={toSignup}>
+            {" "}
+            Sign Up{" "}
+          </button>
+
       </>
     );
   }
@@ -36,9 +52,7 @@ function Navigation({ isLoaded }) {
     <div className="navbar">
       <div className="nav_content">
         <div className="navbar_left">
-          <h1 onClick={toHomepage} style={{ cursor: "pointer" }} className="eventframe_logo">
-            eventframe
-          </h1>
+          <img className="navbar_logo" onClick={toHomepage} src={logo} alt="" />
           <div className="search_bar">
             <input
               className="events_search"
