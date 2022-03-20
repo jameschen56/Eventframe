@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 
@@ -11,6 +10,10 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const closeMenu = () => {
+    setShowMenu(false)
+  }
 
   useEffect(() => {
     if (!showMenu) return;
@@ -36,9 +39,9 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle"></i>
       </button>
       {showMenu && (
-        <ul className="dropdownList">
-          <li>{user.username}</li>
-          <li className="buttonli">
+        <ul className="dropdownList" onMouseLeave={closeMenu}>
+          <li className="to_username">{user.username}</li>
+          <li className="to_logout">
             <button className="logout_btn" onClick={logout}>
               Log Out
             </button>
