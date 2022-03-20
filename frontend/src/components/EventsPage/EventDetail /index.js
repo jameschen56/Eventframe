@@ -91,7 +91,7 @@ const SingleEvent = () => {
                   )
                 .map((star, idx) => <span key={idx}>{star}</span>)} */}
         </h3>
-        {user_Id !== event?.id && (
+        {user_Id !== event?.userId && (
           <div className="add-review-modal">
             <CreateReview />
           </div>
