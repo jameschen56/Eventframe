@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
         <NavLink id="create-event" to="/create-event">
           <i className="fas fa-plus"></i>Create Event
         </NavLink>
-        <ProfileButton />
+        <ProfileButton sessionUser={sessionUser}/>
       </>
     );
   } else {
