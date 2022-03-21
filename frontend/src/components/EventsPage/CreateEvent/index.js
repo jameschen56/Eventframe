@@ -18,7 +18,7 @@ const CreateEvent = () => {
 
   useEffect(() => {
     const errors = [];
-    if (!title) errors.push("Please provide a name");
+    if (!title) errors.push("Please provide a title");
     if (!description) errors.push("Please provide a description");
     if (!imageUrl.length) errors.push("Please provide a valid URL");
     if (imageUrl.length > 0 && !imageUrl.match(/^https?:\/\/.+\/.+$/))
