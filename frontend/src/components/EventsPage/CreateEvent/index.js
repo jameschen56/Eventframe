@@ -25,7 +25,7 @@ const CreateEvent = () => {
       errors.push("Please provide a valid URL");
     if (!eventDate) errors.push("Please provide a date");
     if (!location) errors.push("Please provide a location");
-    setErrorValidator(errors);
+    setErrorValidator(errors)
   }, [title, imageUrl, description, eventDate, location, dispatch]);
 
   const toCreateEvent = () => {
