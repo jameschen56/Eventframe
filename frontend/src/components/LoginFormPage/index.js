@@ -41,7 +41,7 @@ function LoginFormPage() {
     <div className="login_container">
       <div className="left_container">
         <div className="left_container_logo">
-          <p>eventframe</p>
+          <p className="eventframe_logo">eventframe</p>
           <h1>Log In</h1>
         </div>
         <form onSubmit={handleSubmit}>
