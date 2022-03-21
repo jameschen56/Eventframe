@@ -28,6 +28,10 @@ const CreateEvent = () => {
     setErrorValidator(errors);
   }, [title, imageUrl, description, eventDate, location, dispatch]);
 
+  const toCreateEvent = () => {
+    history.push("/")
+  }
+
   const newEventSubmit = (e) => {
     e.preventDefault();
     const payload = {
@@ -63,10 +67,20 @@ const CreateEvent = () => {
             <label> Title </label>
             <input
               id="form-label-title"
-              placeholder="Title"
+              placeholder="Be clear and descriptive"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="create_event_input-bar"
+            />
+          </div>
+          <div className="description-input">
+            <label> Description </label>
+            <textarea
+              id="form-label-Date"
+              placeholder="Please tell us more about this event .."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="create_event_description_input-bar"
             />
           </div>
           <div className="image-input">
@@ -78,16 +92,6 @@ const CreateEvent = () => {
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
               className="create_event_input-bar"
-            />
-          </div>
-          <div className="description-input">
-            <label> Description </label>
-            <textarea
-              id="form-label-Date"
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="create_event_description_input-bar"
             />
           </div>
           <div className="title-input">
@@ -112,9 +116,17 @@ const CreateEvent = () => {
             />
           </div>
           <button
+            className="cancel-event-button"
+            type="submit"
+            onClick={toCreateEvent}
+            // disabled={errorValidator.length > 0}
+          >
+            Cancel
+          </button>
+          <button
             className="create-event-button"
             type="submit"
-            disabled={errorValidator.length > 0}
+            // disabled={errorValidator.length > 0}
           >
             Submit
           </button>

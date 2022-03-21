@@ -1,13 +1,103 @@
 .main-create-event-container {
   position: relative;
-  top: 50px;
+  top: 20px;
   width: 800px;
   margin: auto;
   display: column;
   justify-content: center;
-  margin: 60px 0 0 450px;
+  margin: 60px 0 0 600px;
 }
 
-.create-event {
-  width: 500px;
+h1 {
+  justify-content: center;
+  margin-left: 15px;
+  font-size: 45px;
+}
+
+.error-list {
+  color: #a61a2e;
+  font-weight: 400;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
+    Arial, sans-serif;
+  transition: opacity 200ms ease-in;
+}
+
+/* .create-event {
+  width: 600px;
+} */
+
+.create-event label {
+  font-weight: 400px;
+  font-size: 15px;
+  text-align: left;
+}
+
+.create_event_input-bar {
+  /* box-shadow: 0 1px 4px 0 rgb(34 34 34 / 10%) inset;
+  border-color: rgba(34, 34, 34, 0.15);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px; */
+  color: #222222;
+  display: block;
+  outline: none;
+  font-family: inherit;
+  width: 400px;
+  height: 50px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.create_event_description_input-bar {
+  /* box-shadow: 0 1px 4px 0 rgb(34 34 34 / 10%) inset;
+  border-color: rgba(34, 34, 34, 0.15);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px; */
+  color: #222222;
+  display: block;
+  outline: none;
+  font-family: inherit;
+  width: 400px;
+  height: 100px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.cancel-event-button {
+  border: 2px solid gray;
+  background-color: white;
+  border-radius: 4px;
+  color: black;
+  font-size: 22px;
+  font-weight: 400;
+  width: 125px;
+  height: 35px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.3, 1);
+  margin-left: 55px;
+}
+
+.cancel-event-button:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.create-event-button {
+  border: none;
+  background-color: rgba(255, 68, 0, 0.637);
+  border-radius: 4px;
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+  width: 125px;
+  height: 35px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.3, 1);
+  margin-left: 50px;
+}
+
+.create-event-button:hover {
+  background-color: orangered;
+  cursor: pointer;
 }
