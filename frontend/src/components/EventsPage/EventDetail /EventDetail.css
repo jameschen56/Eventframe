@@ -160,3 +160,50 @@
   font-weight: bold;
   margin-left: 15px;
 }
+
+.create-review-modal {
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 36px;
+  min-width: 36px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 24px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #222222;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.create-review-modal:hover {
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 36px;
+  min-width: 36px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 24px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #222222;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditReviewForm from "./EditReview";
+import './EditReview.css'
 
 const EditReviewModal = ({reviewId}) => {
   const [showModal, setShowModal] = useState(false);
