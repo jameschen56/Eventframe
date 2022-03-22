@@ -73,7 +73,7 @@ const EditReviewForm = ({ onClose, reviewId }) => {
           <input
             type="number"
             min="1"
-            max="5"
+            max="10"
             step="1"
             // required
             placeholder="Rating"
