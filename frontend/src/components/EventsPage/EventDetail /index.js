@@ -12,8 +12,8 @@ const SingleEvent = () => {
   const history = useHistory();
   const { id } = useParams();
   const eventId = +id;
-  console.log("XXXXXXXXX", id);
-  console.log("----------", eventId);
+  // console.log("XXXXXXXXX", id);
+  // console.log("----------", eventId);
 
   const event = useSelector((state) => state.event[id]);
   const user_Id = useSelector((state) => state.session.user?.id);
@@ -42,17 +42,11 @@ const SingleEvent = () => {
     history.push("/");
   };
 
-  const overallRating = (eventReviews) => {
-    return eventReviews.reduce(function (prevValue, review) {
-      return prevValue + review.rating;
-    }, 0);
-  };
-  // console.log('GGGGGGGGGG', overallRating)
-
-  // const averageRating = overallRating / eventReviews.length
-  // console.log('**************', overallRating)
-  // console.log('^^^^^^^^^^^^^^^^^^^', eventReviews.length)
-  // console.log('&&&&&&&&&&&&&&&', eventReviews)
+  // const overallRating = (eventReviews) => {
+  //   return eventReviews.reduce(function (prevValue, review) {
+  //     return prevValue + review.rating;
+  //   }, 0);
+  // };
 
   const ratings = [];
   for (let i = 0; i < eventReviews.length; i++) {
@@ -61,7 +55,7 @@ const SingleEvent = () => {
   const averageRating = ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
   console.log("4444444444444", averageRating);
 
-  let rating = Math.round(overallRating(eventReviews) / eventReviews.length);
+  // let rating = Math.round(overallRating(eventReviews) / eventReviews.length);
 
   return (
     <div>
