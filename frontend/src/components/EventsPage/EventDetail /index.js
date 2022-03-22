@@ -40,11 +40,24 @@ const SingleEvent = () => {
     history.push("/");
   };
 
-  const overallRating = (productReviews) => {
-    return productReviews?.reduce(function (prevValue, review) {
+  const overallRating = (eventReviews) => {
+    return eventReviews.reduce(function (prevValue, review) {
       return prevValue + review.rating;
     }, 0);
   };
+  // console.log('GGGGGGGGGG', overallRating)
+
+  // const averageRating = overallRating / eventReviews.length
+  // console.log('**************', overallRating)
+  // console.log('^^^^^^^^^^^^^^^^^^^', eventReviews.length)
+  // console.log('&&&&&&&&&&&&&&&', eventReviews)
+
+  const ratings = [];
+  for (let i = 0; i < eventReviews.length; i++) {
+    ratings.push(eventReviews[i].rating);
+  }
+  const averageRating = ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
+  console.log("4444444444444", averageRating);
 
   let rating = Math.round(overallRating(eventReviews) / eventReviews.length);
 
@@ -83,17 +96,11 @@ const SingleEvent = () => {
         </div>
 
         <div className="reviews-display">
-          <h3>
-            {eventReviews?.length} Reviews{" "}
-            {/* {rating > 0 &&
-                Array(rating)
-                .fill(
-                  <span>
-                  <i className="fas fa-star"></i>
-                  </span>
-                  )
-                .map((star, idx) => <span key={idx}>{star}</span>)} */}
-          </h3>
+          <span className="count-reviews">{eventReviews?.length} Reviews </span>
+          <span className="average-rating" >
+            {averageRating ? <span>{averageRating.toFixed(2)} {<i className="fas fa-star"></i>}</span> : <span> {""}</span>}
+          </span>
+
           {user_Id !== event?.userId && (
             <div className="add-review-modal">
               <CreateReview />

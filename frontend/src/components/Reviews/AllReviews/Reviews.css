@@ -1,14 +1,9 @@
 /* .reviews-display {
-    width: 100%;
+    width: 100%; 
     margin: 100px 0px 0px ;
-}
+} */
 
-.reviews-content {
-    height: 575px;
-    overflow: auto;
-    padding-right: 50px;
-    width: 400px;
-}
+/* 
 
 .star-rating {
     padding: 0px 0px 10px 0px;
@@ -37,4 +32,29 @@
 .delete-review-button:hover {
     color: white;
     background-color: rgba(106, 106, 106, 0.7);
-  } */
+}  
+
+*/
+
+.count-reviews {
+    margin-left: 60px;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.star-rating {
+    color: orange;
+}
+
+.reviews-content {
+    /* overflow: auto; */
+    height: 575px;
+    margin-left: 60px;
+    padding-right: 50px;
+    width: 900px;
+}
+
+.reviews-display {
+    margin-top: 20px;
+}

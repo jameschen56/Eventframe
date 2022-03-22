@@ -36,19 +36,20 @@ const AllReviews = () => {
         if (review.eventId === event.id) {
           return (
             <div key={`review-${review.id}`} className="review-container">
-              {/* <div className="user-name">{review.username}{" "}{review.created_at.slice(5, 17)}</div>
+              {console.log('%%%%%%%%%%%',review)}
+              <h3 className="user-name">{review.User.username}{":"}</h3>
               <div className="star-rating">
                 {Array(review.rating)
                   .fill(
                     <span>
-                      <i className="fas fa-star fa-xs"></i>
+                      <i className="fas fa-star"></i>
                     </span>
                   )
                   .map((star, idx) => (
                     <span key={idx}>{star}</span>
                   ))}
               </div>
-              <div className="date"></div> */}
+              <div className="date"></div>
               <div>{review?.review}</div>
               {userId === review.userId && (
                 <div>

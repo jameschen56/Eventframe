@@ -27,8 +27,8 @@ const EditReviewForm = ({ onClose, reviewId }) => {
     const errors = [];
     if (!review) errors.push("Please provide a review");
     if (!rating) errors.push("Please provide a rating");
-    if (rating < 1 || rating > 5)
-      errors.push("Rating must been between 1 or 5");
+    if (rating < 1 || rating > 10)
+      errors.push("Rating must been between 1 to 10");
     setErrorValidator(errors);
   }, [review, rating]);
 
