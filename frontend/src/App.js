@@ -5,7 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import AllEvents from "./components/EventsPage/AllEvents";
+import Home from "./components/Home"
 import SingleEvent from "./components/EventsPage/EventDetail ";
 import CreateEvent from "./components/EventsPage/CreateEvent";
 
@@ -23,7 +23,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/" exact={true}>
-            <AllEvents />
+            <Home />
           </Route>
           <Route path="/login" exact={true}>
             <LoginFormPage />

@@ -1,0 +1,13 @@
+.myFooter {
+  position: absolute;
+  margin-left: -8px;
+  margin-top: 590px;
+  width: 125%;
+  background-color: #1E0A3C;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.00938em;
+  padding: 22px;
+  color: white;
+  text-align: left;
+}

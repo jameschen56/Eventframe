@@ -1,14 +1,11 @@
-import './Footer.css'
-import { NavLInk } from 'react-router-dom'
+import "./MyFooter.css";
 
-const Footer = () => {
+const MyFooter = () => {
+  return (
+    <footer className="myFooter">
+    © 2022 eventframe by James Chen. All rights reserved.
+    </footer>
+  );
+};
 
-    return (
-        <footer className="footer-container">
-
-        </footer>
-    )
-
-}
-
-export default Footer;
+export default MyFooter;
