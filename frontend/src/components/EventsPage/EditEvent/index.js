@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditEvent from "./EditEvent";
+import './EditEvent.css'
 
 const EditEventModal = () => {
   const [showModal, setShowModal] = useState(false);
