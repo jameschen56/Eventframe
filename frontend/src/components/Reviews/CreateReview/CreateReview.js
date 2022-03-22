@@ -12,14 +12,14 @@ const CreateReview = ({ onClose }) => {
   const history = useHistory();
 
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [errorValidator, setErrorValidator] = useState([]);
 
   useEffect(() => {
     const errors = [];
     if (!review) errors.push("Please provide a review");
     if (!rating) errors.push("Please provide a rating");
-    if (rating < 1 || rating > 5) errors.push("Rating must be between 1 or 5");
+    if (rating < 1 || rating > 10) errors.push("Rating must be between 1 to 10");
     setErrorValidator(errors);
   }, [review, rating]);
 
@@ -41,7 +41,7 @@ const CreateReview = ({ onClose }) => {
   };
 
   return (
-    <div>
+    <div className="new-review-container">
       <form className="new-review-form" onSubmit={handleSubmit}>
         <ul className="errors-list">
           {errorValidator.map((error) => (

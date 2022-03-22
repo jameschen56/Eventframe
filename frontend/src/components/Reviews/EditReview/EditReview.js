@@ -15,7 +15,6 @@ const EditReviewForm = ({ onClose, reviewId }) => {
   // console.log('7777777777777', reviews)
   // console.log('6666666666666', reviews[reviewId].review)
 
-
   const history = useHistory();
 
   const [review, setReview] = useState(reviews[reviewId].review);
@@ -50,14 +49,14 @@ const EditReviewForm = ({ onClose, reviewId }) => {
 
   return (
     <div className="edit-review-container">
-      <ul className="errors-list">
-        {errorValidator.map((error) => (
-          <li className="error-list" key={error}>
-            {error}
-          </li>
-        ))}
-      </ul>
-      <form className="edit-review" onSubmit={handleEditReview}>
+      <form className="edit-review-form" onSubmit={handleEditReview}>
+        <ul className="errors-list">
+          {errorValidator.map((error) => (
+            <li className="error-list" key={error}>
+              {error}
+            </li>
+          ))}
+        </ul>
         <div className="review">
           <label> Update Review </label>
           <textarea
@@ -94,7 +93,7 @@ const EditReviewForm = ({ onClose, reviewId }) => {
           >
             Submit
           </button>
-          <button className="cancel-edit-button" onClick={onClose}>
+          <button className="cancel-review-button" onClick={onClose}>
             Cancel
           </button>
         </div>
