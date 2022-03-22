@@ -92,6 +92,7 @@ const SingleEvent = () => {
         </div>
 
         {/* <div>Location: {event?.location}</div> */}
+        <div className="event-location">Location: {event.location}</div>
         <div className="about-event">
           <h2>About this Event</h2>
           <div>{event.description}</div>
