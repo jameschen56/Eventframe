@@ -33,7 +33,7 @@ const CreateReview = ({ onClose }) => {
     };
 
     const newReview = await dispatch(createReview(payload));
-    
+
     if (newReview) {
       history.push(`/events/${event.id}`);
       onClose(false);
@@ -42,14 +42,14 @@ const CreateReview = ({ onClose }) => {
 
   return (
     <div>
-      <ul className="errors-list">
-        {errorValidator.map((error) => (
-          <li className="error-list" key={error}>
-            {error}
-          </li>
-        ))}
-      </ul>
       <form className="new-review-form" onSubmit={handleSubmit}>
+        <ul className="errors-list">
+          {errorValidator.map((error) => (
+            <li className="error-list" key={error}>
+              {error}
+            </li>
+          ))}
+        </ul>
         <div className="review">
           <label> Review </label>
           <textarea
@@ -65,7 +65,7 @@ const CreateReview = ({ onClose }) => {
           <input
             type="number"
             min="1"
-            max="5"
+            max="10"
             step="1"
             placeholder="Rating"
             value={rating}

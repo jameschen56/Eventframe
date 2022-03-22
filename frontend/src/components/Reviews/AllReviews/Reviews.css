@@ -1,14 +1,9 @@
 /* .reviews-display {
-    width: 100%;
+    width: 100%; 
     margin: 100px 0px 0px ;
-}
+} */
 
-.reviews-content {
-    height: 575px;
-    overflow: auto;
-    padding-right: 50px;
-    width: 400px;
-}
+/* 
 
 .star-rating {
     padding: 0px 0px 10px 0px;
@@ -37,4 +32,73 @@
 .delete-review-button:hover {
     color: white;
     background-color: rgba(106, 106, 106, 0.7);
-  } */
+}  
+
+*/
+
+.count-reviews {
+  margin-left: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.star-rating {
+  color: orange;
+}
+
+.reviews-content {
+  /* overflow: auto; */
+  height: 575px;
+  margin-left: 60px;
+  padding-right: 50px;
+  width: 900px;
+}
+
+.reviews-display {
+  margin-top: 20px;
+}
+
+.delete-review-button {
+  font-size: 10px;
+  line-height: 1.4;
+  height: 46px;
+  width: 86px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 24px;
+  background-color: white;
+  color: #ac0000;
+  text-decoration: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ac0000;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.delete-review-button:hover {
+    font-size: 10px;
+    line-height: 1.4;
+    height: 46px;
+    width: 86px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+    background-color: #ac0000;
+    color: white;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ac0000;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15px;
+  }
