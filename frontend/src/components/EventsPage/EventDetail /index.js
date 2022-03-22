@@ -62,6 +62,8 @@ const SingleEvent = () => {
       <img className="blurry-image" src={event.imageUrl} alt={event.title} />
       <div className="event-details-container">
         <img
+          width={800}
+          height={400}
           className="event-image"
           alt={event.title}
           src={
