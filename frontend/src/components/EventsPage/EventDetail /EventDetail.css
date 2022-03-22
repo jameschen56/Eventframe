@@ -49,8 +49,15 @@
   word-break: break-word;
 }
 
+.event-location {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 832px;
+  margin-top: 50px;
+}
+
 .about-event {
-  margin-top: 70px;
+  margin-top: -50px;
   max-width: 600px;
   font-size: 18px;
   line-height: 1.5rem;
