@@ -23,6 +23,8 @@ const SingleEvent = () => {
     (review) => review.eventId === eventId
   );
 
+  console.log('UUUUUUUUUUU', user_Id)
+
   useEffect(() => {
     dispatch(getSingleEvent(id));
   }, [dispatch, id]);
@@ -98,10 +100,10 @@ const SingleEvent = () => {
         <div className="reviews-display">
           <span className="count-reviews">{eventReviews?.length} Reviews </span>
           <span className="average-rating" >
-            {averageRating ? <span>{averageRating.toFixed(2)} {<i className="fas fa-star"></i>}</span> : <span> {""}</span>}
+            {averageRating ? <span>{averageRating.toFixed(2)} {<i className="far fa-star"></i>}</span> : <span> {""}</span>}
           </span>
 
-          {user_Id !== event?.userId && (
+          {user_Id !== event?.userId && user_Id && (
             <div className="add-review-modal">
               <CreateReview />
             </div>
