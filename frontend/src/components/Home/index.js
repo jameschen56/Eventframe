@@ -31,7 +31,7 @@ const Home = () => {
       <div>
         <div className="events-main">
           <div className="popular-logo">
-            <h3>Popular in United States</h3>
+            <h1>Popular in <span>United States</span></h1>
           </div>
           <div className="events-content">
             {eventList.length &&
