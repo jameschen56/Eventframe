@@ -55,3 +55,28 @@ Eventframe was built using the following technologies:
 --`npm start`
 10. You can use the Demo user or create an account to begin using eventframe.
 
+## Features
+
+# Splash Page 
+<img width="1420" alt="splash_page" src="https://user-images.githubusercontent.com/87781597/160019959-600ab472-35fa-4fb6-bfb3-53fbe512f9f2.png">
+
+
+
+# Login Page 
+<img width="1417" alt="login_page" src="https://user-images.githubusercontent.com/87781597/160020114-0586a54d-9b52-4eea-b835-fcb2119e0380.png">
+
+
+
+
+
+
+# Signup Page 
+<img width="1409" alt="singup_page" src="https://user-images.githubusercontent.com/87781597/160020174-a989cb01-b684-433c-baf6-f04b46463c0b.png">
+
+
+
+
+
+
+# Event-Detail Page
+![event-detail](https://user-images.githubusercontent.com/87781597/160020453-40bf800f-20b3-47e5-b794-c95e549592e4.png)
