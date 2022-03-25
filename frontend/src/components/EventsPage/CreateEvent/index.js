@@ -129,7 +129,7 @@ const CreateEvent = () => {
         <button
           className="create-event-button"
           type="submit"
-          // disabled={errorValidator.length > 0}
+          disabled={errorValidator.length > 0}
           >
           Submit
         </button>

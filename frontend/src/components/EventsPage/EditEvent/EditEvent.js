@@ -24,6 +24,7 @@ const EditEvent = ({ onClose }) => {
     // if (!imageUrl.length) errors.push("Please provide a valid URL");
     // if (imageUrl.length > 0 && !imageUrl.match(/^https?:\/\/.+\/.+$/))
     //   errors.push("Please provide a valid URL");
+    if (!imageUrl.length) errors.push("Image file must end in a jpeg/jpg/gif/png format");
     if (imageUrl.length > 0 && !imageUrl.match(/\.(jpeg|jpg|gif|png)$/))
       errors.push("Image file must end in a jpeg jpg gif or png format");
     if (!eventDate) errors.push("Please provide a date");
