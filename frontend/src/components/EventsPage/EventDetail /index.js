@@ -59,17 +59,20 @@ const SingleEvent = () => {
 
   return (
     <div>
-      <img className="blurry-image" src={event.imageUrl} alt={event.title} />
+      <img className="blurry-image" width={1600} height={800} src={event.imageUrl} alt={event.title} onError={(e) =>
+            (e.target.src =
+              "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
+          }/>
       <div className="event-details-container">
         <img
           width={800}
           height={400}
           className="event-image"
           alt={event.title}
-          src={
-            event.imageUrl
-              ? event.imageUrl
-              : "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo="
+          src={event.imageUrl}
+          onError={(e) =>
+            (e.target.src =
+              "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
           }
         />
         <div className="event-details">
