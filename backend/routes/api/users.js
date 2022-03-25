@@ -40,6 +40,17 @@ const validateSignup = [
     .withMessage("Please provide your name with at least 2 characters.")
     .isLength({ max: 100 })
     .withMessage("Name is too long."),
+  check("email")
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage("Please provide a valid email.")
+    .custom((value, { req }) => {
+      return User.findOne({ where: { email: value } }).then((user) => {
+        if (user && user.id !== req.user.id) {
+          return Promise.reject("This email is already being used.");
+        }
+      });
+    }),
   check("password")
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -50,20 +61,23 @@ const validateSignup = [
 ];
 
 // Sign up
-router.post("", validateSignup, asyncHandler(async (req, res) => {
-  const { email, username, name, password } = req.body;
+router.post(
+  "",
+  validateSignup,
+  asyncHandler(async (req, res) => {
+    const { email, username, name, password } = req.body;
 
-  // create user
-  const user = await User.signup({ email, username, name, password });
+    // create user
+    const user = await User.signup({ email, username, name, password });
 
-  console.log('--------', name)
+    console.log("--------", name);
 
-  await setTokenCookie(res, user);
+    await setTokenCookie(res, user);
 
-  return res.json({
-    user,
-  });
-})
+    return res.json({
+      user,
+    });
+  })
 );
 
 module.exports = router;

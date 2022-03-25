@@ -19,11 +19,13 @@ const EditEvent = ({ onClose }) => {
 
   useEffect(() => {
     const errors = [];
-    if (!title) errors.push("Please provide a name");
+    if (!title) errors.push("Please provide a title");
     if (!description) errors.push("Please provide a description");
-    if (!imageUrl.length) errors.push("Please provide a valid URL");
-    if (imageUrl.length > 0 && !imageUrl.match(/^https?:\/\/.+\/.+$/))
-      errors.push("Please provide a valid URL");
+    // if (!imageUrl.length) errors.push("Please provide a valid URL");
+    // if (imageUrl.length > 0 && !imageUrl.match(/^https?:\/\/.+\/.+$/))
+    //   errors.push("Please provide a valid URL");
+    if (imageUrl.length > 0 && !imageUrl.match(/\.(jpeg|jpg|gif|png)$/))
+      errors.push("Image file must end in a jpeg jpg gif or png format");
     if (!eventDate) errors.push("Please provide a date");
     if (!location) errors.push("Please provide a location");
     setErrorValidator(errors);
