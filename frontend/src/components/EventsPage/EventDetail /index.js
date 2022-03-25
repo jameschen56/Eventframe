@@ -59,7 +59,10 @@ const SingleEvent = () => {
 
   return (
     <div>
-      <img className="blurry-image" src={event.imageUrl} alt={event.title} />
+      <img className="blurry-image" width={1600} height={800} src={event.imageUrl} alt={event.title} onError={(e) =>
+            (e.target.src =
+              "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
+          }/>
       <div className="event-details-container">
         <img
           width={800}
