@@ -23,8 +23,6 @@ const SingleEvent = () => {
     (review) => review.eventId === eventId
   );
 
-  console.log('UUUUUUUUUUU', user_Id)
-
   useEffect(() => {
     dispatch(getSingleEvent(id));
   }, [dispatch, id]);
