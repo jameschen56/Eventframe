@@ -4,20 +4,22 @@
   margin-top: 590px;
   width: 120%;
   background-color: #1e0a3c;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0.00938em;
   padding: 22px;
   color: white;
   text-align: left;
+  display: flex
+;
 }
 
-.myFooter span {
-    margin-left: 1000px
+.myFooter div {
+    margin-left: 1100px;
 }
 
 .myFooter a {
   color: white;
-  font-size: 15px;
+  font-size: 17px;
   margin-right: 15px;
 }
