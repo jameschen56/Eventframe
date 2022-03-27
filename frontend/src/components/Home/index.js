@@ -49,21 +49,23 @@ const Home = () => {
                 <Link
                   key={`single_event_link_${event?.id}`}
                   to={`/events/${event?.id}`}
+                  style={{textDecoration: 'none'}} 
                 >
-                  <div className="all-events-container">
+                  {/* <div className="all-events-container"> */}
                     <div className="event_images">
                       <img
                         height={250}
                         alt={event?.title}
                         src={event?.imageUrl}
+                        className="image"
                         onError={(e) =>
                           (e.target.src =
                             "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
                         }
                       />
+                      <div className="event_title" >{event?.title}</div>
                     </div>
-                    <div className="event_title">{event?.title}</div>
-                  </div>
+                  {/* </div> */}
                 </Link>
               ))}
           </div>

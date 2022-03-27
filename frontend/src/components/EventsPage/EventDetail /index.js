@@ -47,11 +47,24 @@ const SingleEvent = () => {
   // };
 
   const ratings = [];
-  for (let i = 0; i < eventReviews.length; i++) {
+  for (let i = 0; i < eventReviews.length; i++) { 
     ratings.push(eventReviews[i].rating);
   }
   const averageRating = ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
-  console.log("4444444444444", averageRating);
+
+  const eventDate = (new Date(event.eventDate)).toString().split(' ')[0] + ', ' + (new Date(event.eventDate)).toString().split(' ')[1] + ' ' + (new Date(event.eventDate) ).toString().split(' ')[2] + ' ' + (new Date(event.eventDate)).toString().split(' ')[3];
+  const xxxxxx = new Date(event.eventDate)
+  console.log('$$$$$$$$', xxxxxx)
+
+  // const eventDate = new Date(event.eventDate).toDateString()
+  // console.log('#############', eventDate)
+  
+
+  // const parseDateString = (dateString) => {
+  //   const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  //   let newDate = new Date(dateString);
+  //   return `${monthNames[newDate.getMonth()]} ${newDate.getDay()}, ${newDate.getFullYear()}`
+  // }
 
   // let rating = Math.round(overallRating(eventReviews) / eventReviews.length);
 
@@ -76,7 +89,7 @@ const SingleEvent = () => {
         <div className="event-details">
           <h3>
             <div>{event.title}</div>
-            <div>{event.eventDate}</div>
+            <div>{eventDate}</div>
           </h3>
           <div className="event-btn-container">
             {user_Id === event.userId && <EditEventModal />}
