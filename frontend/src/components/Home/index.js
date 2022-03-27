@@ -28,7 +28,7 @@ const Home = () => {
         src="https://images.unsplash.com/photo-1578946956088-940c3b502864?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2223&q=80"
         alt=""
       ></img>
-      <div className="adsBanner">
+      <div className="advertisement-banner">
         <h1>Re-open confidently with Eventframe’s COVID-19 Safety Playbook</h1>
         <p>
           We do not partnered with risk management and health experts to empower
@@ -57,7 +57,7 @@ const Home = () => {
                         height={250}
                         alt={event?.title}
                         src={event?.imageUrl}
-                        className="image"
+                        className="event_image"
                         onError={(e) =>
                           (e.target.src =
                             "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")

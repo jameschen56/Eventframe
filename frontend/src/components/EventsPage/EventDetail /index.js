@@ -5,6 +5,7 @@ import { getSingleEvent, deleteSingleEvent } from "../../../store/event";
 import EditEventModal from "../EditEvent";
 import AllReviews from "../../Reviews/AllReviews";
 import CreateReview from "../../Reviews/CreateReview/";
+import MyFooter from "../../Footer";
 import "./EventDetail.css";
 
 const SingleEvent = () => {
@@ -47,18 +48,25 @@ const SingleEvent = () => {
   // };
 
   const ratings = [];
-  for (let i = 0; i < eventReviews.length; i++) { 
+  for (let i = 0; i < eventReviews.length; i++) {
     ratings.push(eventReviews[i].rating);
   }
-  const averageRating = ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
+  const averageRating =
+    ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
 
-  const eventDate = (new Date(event.eventDate)).toString().split(' ')[0] + ', ' + (new Date(event.eventDate)).toString().split(' ')[1] + ' ' + (new Date(event.eventDate) ).toString().split(' ')[2] + ' ' + (new Date(event.eventDate)).toString().split(' ')[3];
-  const xxxxxx = new Date(event.eventDate)
-  console.log('$$$$$$$$', xxxxxx)
+  const eventDate =
+    new Date(event.eventDate).toString().split(" ")[0] +
+    ", " +
+    new Date(event.eventDate).toString().split(" ")[1] +
+    " " +
+    new Date(event.eventDate).toString().split(" ")[2] +
+    " " +
+    new Date(event.eventDate).toString().split(" ")[3];
+  const xxxxxx = new Date(event.eventDate);
+  console.log("$$$$$$$$", xxxxxx);
 
   // const eventDate = new Date(event.eventDate).toDateString()
   // console.log('#############', eventDate)
-  
 
   // const parseDateString = (dateString) => {
   //   const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -70,10 +78,17 @@ const SingleEvent = () => {
 
   return (
     <div>
-      <img className="blurry-image" width={1600} height={800} src={event.imageUrl} alt={event.title} onError={(e) =>
-            (e.target.src =
-              "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
-          }/>
+      <img
+        className="blurry-image"
+        width={1600}
+        height={800}
+        src={event.imageUrl}
+        alt={event.title}
+        onError={(e) =>
+          (e.target.src =
+            "https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png")
+        }
+      />
       <div className="event-details-container">
         <img
           width={800}
@@ -110,8 +125,14 @@ const SingleEvent = () => {
 
         <div className="reviews-display">
           <span className="count-reviews">{eventReviews?.length} Reviews </span>
-          <span className="average-rating" >
-            {averageRating ? <span>{averageRating.toFixed(2)} {<i className="far fa-star"></i>}</span> : <span> {""}</span>}
+          <span className="average-rating">
+            {averageRating ? (
+              <span>
+                {averageRating.toFixed(2)} {<i className="far fa-star"></i>}
+              </span>
+            ) : (
+              <span> {""}</span>
+            )}
           </span>
 
           {user_Id !== event?.userId && user_Id && (
@@ -121,6 +142,9 @@ const SingleEvent = () => {
           )}
           <AllReviews />
         </div>
+      </div>
+      <div className="event-footer">
+        <MyFooter />
       </div>
     </div>
   );
