@@ -53,6 +53,12 @@ const SingleEvent = () => {
   const averageRating = ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
   console.log("4444444444444", averageRating);
 
+  const parseDateString = (dateString) => {
+    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    let newDate = new Date(dateString);
+    return `${monthNames[newDate.getMonth()]} ${newDate.getDay()+1}, ${newDate.getFullYear()}`
+}
+
   // let rating = Math.round(overallRating(eventReviews) / eventReviews.length);
 
   return (
@@ -76,7 +82,7 @@ const SingleEvent = () => {
         <div className="event-details">
           <h3>
             <div>{event.title}</div>
-            <div>{event.eventDate}</div>
+            <div>{parseDateString(event.eventDate)}</div>
           </h3>
           <div className="event-btn-container">
             {user_Id === event.userId && <EditEventModal />}
