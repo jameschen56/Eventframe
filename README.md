@@ -58,7 +58,8 @@ Eventframe was built using the following technologies:
 ## Features
 
 # Splash Page 
-<img width="1420" alt="splash_page" src="https://user-images.githubusercontent.com/87781597/160019959-600ab472-35fa-4fb6-bfb3-53fbe512f9f2.png">
+![Splash-Page](https://user-images.githubusercontent.com/87781597/160284504-4a3673ee-ba15-4a84-b647-d0fe64f2ccba.png)
+
 
 
 
@@ -79,4 +80,5 @@ Eventframe was built using the following technologies:
 
 
 # Event-Detail Page
-![event-detail](https://user-images.githubusercontent.com/87781597/160020453-40bf800f-20b3-47e5-b794-c95e549592e4.png)
+![Event-Detail Page](https://user-images.githubusercontent.com/87781597/160284527-7a869ccb-feae-4bad-aa5d-d459b0e1c11d.png)
+
