@@ -45,7 +45,7 @@ function LoginFormPage() {
           <h1>Log In</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <ul>
+          <ul className="errors-list">
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
@@ -85,7 +85,7 @@ function LoginFormPage() {
           alt="right_banner"
           className="right_img"
           src="https://cdn.evbstatic.com/s3-build/perm_001/530d34/django/images/login/lateral-image-2.jpg"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></img>
       </div>
     </div>
