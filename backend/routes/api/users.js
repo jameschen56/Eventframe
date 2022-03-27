@@ -40,17 +40,6 @@ const validateSignup = [
     .withMessage("Please provide your name with at least 2 characters.")
     .isLength({ max: 100 })
     .withMessage("Name is too long."),
-  check("email")
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage("Please provide a valid email.")
-    .custom((value, { req }) => {
-      return User.findOne({ where: { email: value } }).then((user) => {
-        if (user && user.id !== req.user.id) {
-          return Promise.reject("This email is already being used.");
-        }
-      });
-    }),
   check("password")
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
