@@ -56,9 +56,11 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
     const eventToUpdate = await Event.findByPk(eventId);
     const userId = eventToUpdate.userId;
     const { title, description, imageUrl, eventDate, location} = req.body;
+    console.log('$$$$$$$$$$$$$$$$', eventDate)
     if (id === userId) {
         if (validateErrors.isEmpty()) {
             const event = await eventToUpdate.update({title, description, imageUrl, eventDate, location});
+            await eventToUpdate.save()
             return res.json(event)
         } else {
             res.json(validateErrors)

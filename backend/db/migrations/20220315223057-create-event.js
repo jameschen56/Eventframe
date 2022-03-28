@@ -22,7 +22,7 @@ module.exports = {
       },
       eventDate: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       location: {
         allowNull: false,

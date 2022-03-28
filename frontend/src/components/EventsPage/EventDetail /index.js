@@ -104,7 +104,7 @@ const SingleEvent = () => {
         <div className="event-details">
           <h3>
             <div>{event.title}</div>
-            <div>{eventDate}</div>
+            <div>{(new Date(new Date((new Date(event.eventDate))).getTime() + 86400000)).toString().slice(4, 16)}</div>
           </h3>
           <div className="event-btn-container">
             {user_Id === event.userId && <EditEventModal />}

@@ -9,13 +9,23 @@ const EditEvent = ({ onClose }) => {
 
   const { id } = useParams();
   const event = useSelector((state) => state.event[id]);
+  // const event_Date =
+  //   new Date(event.eventDate).toString().split(" ")[1] +
+  //   " " +
+  //   new Date(event.eventDate).toString().split(" ")[2] +
+  //   " " +
+  //   new Date(event.eventDate).toString().split(" ")[3];
+  
+  // console.log('%%%%%%%%%%%%%%%%%%', event_Date)
 
   const [title, setTitle] = useState(event?.title || "");
   const [imageUrl, setImageUrl] = useState(event?.imageUrl || "");
   const [description, setDescription] = useState(event?.description || "");
-  const [eventDate, setEventDate] = useState(event?.eventDate || "");
+  const [eventDate, setEventDate] = useState(event?.eventDate.slice(0,10) || "");
   const [location, setLocation] = useState(event?.setLocation || "");
   const [errorValidator, setErrorValidator] = useState([]);
+
+  console.log('^^^^^^^^^^^^', useState(event?.eventDate.slice(0,10) || "") )
 
   useEffect(() => {
     const errors = [];
@@ -103,8 +113,9 @@ const EditEvent = ({ onClose }) => {
             <label> Date </label>
             <input
               id="form-label-Date"
-              placeholder="Date"
-              value={eventDate}
+              placeholder='date'
+              type="date"
+              defaultValue={eventDate}
               onChange={(e) => setEventDate(e.target.value)}
               className="edit_event_input-bar"
             />
