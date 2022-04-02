@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home"
 import SingleEvent from "./components/EventsPage/EventDetail ";
 import CreateEvent from "./components/EventsPage/CreateEvent";
+import Handle404 from "./components/Handle404";
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/create-event" exact={true}>
             <CreateEvent />
+          </Route>
+          <Route>
+            <Handle404 />
           </Route>
         </Switch>
       )}

@@ -1,0 +1,15 @@
+.handle404 {
+    background-image: url("../../../public/images/404_Awkward_page.jpg");
+    background-size: cover;
+    width: 105%;
+    margin-left: -50px;
+    margin-bottom: -590px;
+    height: 810px; 
+    text-align: center;
+}
+
+.handle404 h2 {
+    color: #fff;
+    font-size: 25px;
+    
+}
