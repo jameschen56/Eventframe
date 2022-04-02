@@ -1,0 +1,39 @@
+.handle404 {
+    background-image: url("../../../public/images/404_Awkward_page.jpg");
+    background-size: cover;
+    width: 105%;
+    margin-left: -50px;
+    margin-bottom: -590px;
+    height: 810px; 
+    text-align: center;
+}
+
+.handle404 h2 {
+    color: #fff;
+    font-family: proxima-nova, sans-serif;
+    /* font-family: "Roboto", Arial, sans-serif; */
+    font-size: 22px;
+    font-size: 40px;
+    line-height: 643px;
+    font-weight: 600;
+}
+
+.handle404 p {
+    color: #fff;
+    font-family: proxima-nova, sans-serif;
+    /* font-family: "Roboto", Arial, sans-serif; */
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-top: -285px;
+}
+
+.return_home {
+    color: #fff;
+    font-family: proxima-nova, sans-serif;
+    /* font-family: "Roboto", Arial, sans-serif; */
+    font-size: 22px;
+    line-height: 100px;
+    font-weight: 400;
+    margin-right: 27px;
+}
