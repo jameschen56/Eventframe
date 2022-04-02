@@ -10,6 +10,26 @@
 
 .handle404 h2 {
     color: #fff;
-    font-size: 25px;
-    
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 40px;
+    line-height: 643px;
+    font-weight: 600;
+}
+
+.handle404 p {
+    color: #fff;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-top: -285px;
+}
+
+.return_home {
+    color: #fff;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 100px;
+    font-weight: 400;
+    margin-right: 27px;
 }
