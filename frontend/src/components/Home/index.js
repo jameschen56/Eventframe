@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaBorderNone } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllEvents } from "../../store/event";
@@ -21,6 +22,21 @@ const Home = () => {
     }
   }, [events]);
 
+  const getEventsByCategoryId = (categoryId) => {
+    if(categoryId === 0) {
+        dispatch(getAllEvents());
+    } else {
+        return (
+          <div>None</div>
+        )
+    }
+    window.scroll({
+        top:625,
+        left:0,
+        behavior: 'smooth'
+    });
+  }
+
   return (
     <>
       <img
@@ -42,9 +58,16 @@ const Home = () => {
             <h1>
               Popular in <span>United States</span>
             </h1>
+            <div className="categoryMenu">
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(0)}} style={{cursor: 'pointer'}}> All Events</button>
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(4)}} style={{cursor: 'pointer'}}> Online </button>
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(2)}} style={{cursor: 'pointer'}}> Free </button>
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(1)}} style={{cursor: 'pointer'}}> Food & Drink </button>
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(7)}} style={{cursor: 'pointer'}}> Music </button>
+            </div>
           </div>
           <div className="events-content">
-            {eventList.length &&
+            {eventList.length > 0  ? 
               eventList.map((event) => (
                 <Link
                   key={`single_event_link_${event?.id}`}
@@ -67,7 +90,7 @@ const Home = () => {
                     </div>
                   {/* </div> */}
                 </Link>
-              ))}
+              )) :<div className="unmatched_events">Nothing matched your search!<img alt="unmatched_events" src="../images/no_events.png" width="60" height="60"></img></div> } 
           </div>
         </div>
         <MyFooter />

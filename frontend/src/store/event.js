@@ -5,6 +5,7 @@ const GET_EVENTS = "events/GET_EVENT";
 const ADD_EVENT = "events/ADD_EVENT";
 const EDIT_EVENT = "events/EDIT_EVENT";
 const DELETE_EVENT = "events/DELETE_EVENT";
+const FILTER_EVENTS = "event/filterEvents"
 
 // ------- action creators ---------
 const getEvents = (events) => {
@@ -41,6 +42,13 @@ const deleteEvent = (id) => {
     id,
   };
 };
+
+const filterEventsAction = (events) => {
+  return {
+    type: FILTER_EVENTS,
+    payload: events,
+  }
+}
 
 // ------- thunk action creators ---------
 export const getAllEvents = () => async (dispatch) => {
@@ -103,15 +111,25 @@ export const deleteSingleEvent = (id) => async (dispatch) => {
   }
 };
 
+export const searchEvents = (searchString) => async dispatch => {
+  const response = await csrfFetch(`/api/events/search/${searchString}`);
+
+  if (response.ok) {
+    const events = await response.json();
+    dispatch(filterEventsAction(events));
+  }
+};
+
 // ------- reducer ---------
 const eventsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case GET_EVENTS:
-      newState = { ...state };
-      action.events.forEach((event) => {
-        newState[event.id] = event;
-      });
+      newState = {};
+      newState = action.events.reduce((events, event) => {
+        events[event.id] = event;
+        return events
+      }, {});
       return newState;
     case GET_EVENT:
       newState = { ...state };
@@ -129,6 +147,13 @@ const eventsReducer = (state = {}, action) => {
       newState = { ...state };
       delete newState[action.id];
       return newState;
+    case FILTER_EVENTS:
+      newState = { ...state };
+      newState = action.payload.reduce((events, event) => {
+        events[event.id] = event;
+        return events
+      }, {});
+      return newState
     default:
       return state;
   }

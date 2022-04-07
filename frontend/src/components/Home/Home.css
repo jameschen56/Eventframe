@@ -71,8 +71,8 @@
   margin-left: 20px;
 }
 
-/* current styling for event-card */
 
+/* current styling for event-card */
 .events-content {
   display: flex;
   /* flex-direction: row; */
@@ -159,4 +159,39 @@
   font-weight: bold;
   margin-top: 20px;
 } */
+
+
+/* category */
+
+.categoryMenu {
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.categoryMenu_btn {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 118px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #6f7287;
+}
+
+/* others */
+
+.unmatched_events {
+  color: var(--eds-ui-800,#39364f);
+  font-size: 1.8rem;
+  letter-spacing: .25px;
+  line-height: 2rem;
+  margin-left: 5px;
+  font-weight: 700;
+}
+
+.unmatched_events img {
+  margin-left: 40px;
+  margin-bottom: -20px;
+}
+
 
