@@ -125,10 +125,11 @@ const eventsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case GET_EVENTS:
-      newState = { ...state };
-      action.events.forEach((event) => {
-        newState[event.id] = event;
-      });
+      newState = {};
+      newState = action.events.reduce((events, event) => {
+        events[event.id] = event;
+        return events
+      }, {});
       return newState;
     case GET_EVENT:
       newState = { ...state };
@@ -148,9 +149,11 @@ const eventsReducer = (state = {}, action) => {
       return newState;
     case FILTER_EVENTS:
       newState = { ...state };
-      newState.events = action.payload;
-      console.log('222222222222', newState.events)
-      return newState.events;
+      newState = action.payload.reduce((events, event) => {
+        events[event.id] = event;
+        return events
+      }, {});
+      return newState
     default:
       return state;
   }
