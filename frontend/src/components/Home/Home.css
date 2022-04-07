@@ -71,8 +71,8 @@
   margin-left: 20px;
 }
 
-/* current styling for event-card */
 
+/* current styling for event-card */
 .events-content {
   display: flex;
   /* flex-direction: row; */
@@ -160,3 +160,20 @@
   margin-top: 20px;
 } */
 
+
+/* category */
+
+.categoryMenu {
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.categoryMenu_btn {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 118px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #6f7287;
+}
