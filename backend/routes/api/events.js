@@ -1,5 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
@@ -97,5 +99,21 @@ router.delete('/delete/:id(\\d+)', requireAuth, asyncHandler(async function (req
       return res.json("Success");
   } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
+
+// ------------------ search events -------------------
+router.get('/search/:searchString', asyncHandler(async (req, res) => {
+
+  let searchString = req.params.searchString;
+  let events = await Event.findAll({
+      where: {
+          title: {
+              [Op.iLike]: `%${searchString}%`
+          }
+      }
+  });
+
+  return res.json(events);
+
+}));
 
 module.exports = router

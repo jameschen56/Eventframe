@@ -5,6 +5,7 @@ const GET_EVENTS = "events/GET_EVENT";
 const ADD_EVENT = "events/ADD_EVENT";
 const EDIT_EVENT = "events/EDIT_EVENT";
 const DELETE_EVENT = "events/DELETE_EVENT";
+const FILTER_EVENTS = "event/filterEvents"
 
 // ------- action creators ---------
 const getEvents = (events) => {
@@ -41,6 +42,13 @@ const deleteEvent = (id) => {
     id,
   };
 };
+
+const filterEventsAction = (events) => {
+  return {
+    type: FILTER_EVENTS,
+    payload: events,
+  }
+}
 
 // ------- thunk action creators ---------
 export const getAllEvents = () => async (dispatch) => {
@@ -103,6 +111,15 @@ export const deleteSingleEvent = (id) => async (dispatch) => {
   }
 };
 
+export const searchEvents = (searchString) => async dispatch => {
+  const response = await csrfFetch(`/api/events/search/${searchString}`);
+
+  if (response.ok) {
+    const events = await response.json();
+    dispatch(filterEventsAction(events));
+  }
+};
+
 // ------- reducer ---------
 const eventsReducer = (state = {}, action) => {
   let newState;
@@ -129,6 +146,14 @@ const eventsReducer = (state = {}, action) => {
       newState = { ...state };
       delete newState[action.id];
       return newState;
+    case FILTER_EVENTS:
+      newState = { ...state };
+      console.log('XXXXXXXXXXXXXX', newState)
+      newState.events = action.payload;
+      console.log('222222222222', newState.events)
+      console.log('444444444', action.payload)
+      console.log('3333333333', newState)
+      return newState.events;
     default:
       return state;
   }

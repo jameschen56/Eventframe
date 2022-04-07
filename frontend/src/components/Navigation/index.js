@@ -1,12 +1,14 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { useHistory } from "react-router-dom";
+import { searchEvents } from "../../store/event";
 import logo from "../../assets/logo.png";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+  const dispatch = useDispatch()
 
   const toCreateEvent = () => {
     history.push("/create-event")
@@ -23,6 +25,17 @@ function Navigation({ isLoaded }) {
   const toHomepage = () => {
     history.push("/");
   };
+
+  const startSearch = () => {
+    const searchbar = document.querySelector('.events_search')
+    dispatch(searchEvents(searchbar.value));
+    console.log('**************', dispatch(searchEvents(searchbar.value)))
+    window.scroll({
+      top:625,
+      left:0,
+      behavior: 'smooth'
+  });
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -62,6 +75,7 @@ function Navigation({ isLoaded }) {
             <img
               className="magnifier"
               style={{ cursor: "pointer" }}
+              onClick={startSearch}
               alt=""
               src="../images/search.png"
             ></img>
