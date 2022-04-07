@@ -67,7 +67,7 @@ const Home = () => {
             </div>
           </div>
           <div className="events-content">
-            {eventList.length &&
+            {eventList.length > 0  ? 
               eventList.map((event) => (
                 <Link
                   key={`single_event_link_${event?.id}`}
@@ -90,7 +90,7 @@ const Home = () => {
                     </div>
                   {/* </div> */}
                 </Link>
-              ))}
+              )) :<div className="unmatched_events">Nothing matched your search!<img alt="unmatched_events" src="../images/no_events.png" width="60" height="60"></img></div> } 
           </div>
         </div>
         <MyFooter />
