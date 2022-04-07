@@ -148,11 +148,8 @@ const eventsReducer = (state = {}, action) => {
       return newState;
     case FILTER_EVENTS:
       newState = { ...state };
-      console.log('XXXXXXXXXXXXXX', newState)
       newState.events = action.payload;
       console.log('222222222222', newState.events)
-      console.log('444444444', action.payload)
-      console.log('3333333333', newState)
       return newState.events;
     default:
       return state;

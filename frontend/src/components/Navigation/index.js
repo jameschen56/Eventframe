@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { useHistory } from "react-router-dom";
-import { searchEvents } from "../../store/event";
+import eventsReducer, { searchEvents } from "../../store/event";
 import logo from "../../assets/logo.png";
 import "./Navigation.css";
 
@@ -28,14 +28,15 @@ function Navigation({ isLoaded }) {
 
   const startSearch = () => {
     const searchbar = document.querySelector('.events_search')
+
     dispatch(searchEvents(searchbar.value));
-    console.log('**************', dispatch(searchEvents(searchbar.value)))
     window.scroll({
       top:625,
       left:0,
       behavior: 'smooth'
-  });
-  }
+   });
+  } 
+
 
   let sessionLinks;
   if (sessionUser) {
