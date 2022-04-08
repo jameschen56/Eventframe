@@ -178,6 +178,11 @@
   color: #6f7287;
 }
 
+.categoryMenu_btn:hover{
+  border-width: 2px;
+  border-bottom: black solid;
+  color:black;
+}
 /* others */
 
 .unmatched_events {
