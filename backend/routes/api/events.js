@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
 const { Event } = require('../../db/models')
+const {singlePublicFileUpload, singleMulterUpload} = require("../../awsS3")
 const router = express.Router()
 
 
@@ -71,19 +72,19 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 }))
 
 // --------------------- create an event---------------------
-router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
-
-  const { id } = req.user;
-  const { title, description, imageUrl, eventDate, location } = req.body;
-      const event = await Event.create({
-          title,
-          description,
-          imageUrl,
-          eventDate,
-          location,
-          userId: id
-      });
-      return res.json(event);
+router.post('/new', singleMulterUpload("image"), asyncHandler(async (req, res) => {
+  console.log('11111111', req.body)
+  const { user_Id, title, description, eventDate, location } = req.body;
+  const imageUrl = await singlePublicFileUpload(req.file);
+  const event = await Event.create({
+      userId: user_Id,
+      title,
+      description,
+      imageUrl,
+      eventDate,
+      location
+  });
+  return res.json(event);
 }));
 
 // ------------------ delete an event -------------------

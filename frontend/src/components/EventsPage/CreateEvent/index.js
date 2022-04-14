@@ -10,7 +10,8 @@ const CreateEvent = () => {
   const user = useSelector((state) => state.session.user);
 
   const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState(null)
   const [description, setDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [location, setLocation] = useState("");
@@ -23,13 +24,13 @@ const CreateEvent = () => {
     // if (!imageUrl.length) errors.push("Please provide a valid URL");
     // if (imageUrl.length > 0 && !imageUrl.match(/^https?:\/\/.+\/.+$/))
     //   errors.push("Please provide a valid URL");
-    if (!imageUrl.length) errors.push("Image file must end in a jpeg/jpg/gif/png format");
-    if (imageUrl.length > 0 && !imageUrl.match(/\.(jpeg|jpg|gif|png)$/))
-      errors.push("Image file must end in a jpeg jpg gif or png format");
+    // if (!imageUrl.length) errors.push("Image file must end in a jpeg/jpg/gif/png format");
+    // if (imageUrl.length > 0 && !imageUrl.match(/\.(jpeg|jpg|gif|png)$/))
+    //   errors.push("Image file must end in a jpeg jpg gif or png format");
     if (!eventDate) errors.push("Please provide a date");
     if (!location) errors.push("Please provide a location");
     setErrorValidator(errors);
-  }, [title, imageUrl, description, eventDate, location, dispatch]);
+  }, [title, image, description, eventDate, location, dispatch]);
 
   const toCreateEvent = () => {
     history.push("/");
@@ -40,7 +41,7 @@ const CreateEvent = () => {
     const payload = {
       user_Id: user.id,
       title,
-      imageUrl,
+      image,
       description,
       eventDate,
       location,
@@ -54,6 +55,11 @@ const CreateEvent = () => {
         // console.log('SSSSSSS' , errors)
       });
   };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
 
   return (
     <div className="main-create-event-container">
@@ -86,7 +92,7 @@ const CreateEvent = () => {
             className="create_event_description_input-bar"
           />
         </div>
-        <div className="image-input">
+        {/* <div className="image-input">
           <label> Image Url</label>
           <input
             id="form-label-image"
@@ -96,6 +102,11 @@ const CreateEvent = () => {
             onChange={(e) => setImageUrl(e.target.value)}
             className="create_event_input-bar"
           />
+        </div> */}
+        <div className="image-input">
+          <label>
+            <input type="file" onChange={updateFile} />
+          </label>
         </div>
         <div className="title-input">
           <label> Date </label>
