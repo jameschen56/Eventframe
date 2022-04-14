@@ -86,11 +86,12 @@ export const editOneEvent = (event) => async (dispatch) => {
 };
 
 export const addOneEvent = (event) => async (dispatch) => {
-  const { id, title, image, description, eventDate, location } = event;
+  console.log('333333333', event)
+  const { user_Id, title, image, description, eventDate, location } = event;
 
   const formData = new FormData();
 
-  formData.append("id", id);
+  formData.append("user_Id", user_Id);
   formData.append("title", title);
   formData.append("image", image);
   formData.append("description", description);

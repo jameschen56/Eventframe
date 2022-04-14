@@ -73,17 +73,16 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 
 // --------------------- create an event---------------------
 router.post('/new', singleMulterUpload("image"), asyncHandler(async (req, res) => {
-
-  const { id } = req.user;
-  const { title, description, eventDate, location } = req.body;
+  console.log('11111111', req.body)
+  const { user_Id, title, description, eventDate, location } = req.body;
   const imageUrl = await singlePublicFileUpload(req.file);
   const event = await Event.create({
+      userId: user_Id,
       title,
       description,
       imageUrl,
       eventDate,
-      location,
-      userId: id
+      location
   });
   return res.json(event);
 }));
