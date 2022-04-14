@@ -86,13 +86,31 @@ export const editOneEvent = (event) => async (dispatch) => {
 };
 
 export const addOneEvent = (event) => async (dispatch) => {
+  const { id, title, image, description, eventDate, location } = event;
+
+  const formData = new FormData();
+
+  formData.append("id", id);
+  formData.append("title", title);
+  formData.append("image", image);
+  formData.append("description", description);
+  formData.append("eventDate", eventDate);
+  formData.append("location", location);
+
+  // const response = await csrfFetch('/api/events/new', {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(event)
+  // });
+
   const response = await csrfFetch('/api/events/new', {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(event)
+    headers: { "Content-Type": "multipart/form-data" },
+    body: formData,
   });
+
   if (response.ok) {
     const data = await response.json();
     dispatch(addEvent(data))
