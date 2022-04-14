@@ -92,21 +92,9 @@ const CreateEvent = () => {
             className="create_event_description_input-bar"
           />
         </div>
-        {/* <div className="image-input">
-          <label> Image Url</label>
-          <input
-            id="form-label-image"
-            type="text"
-            placeholder="Image Url"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            className="create_event_input-bar"
-          />
-        </div> */}
         <div className="image-input">
-          <label>
-            <input type="file" onChange={updateFile} />
-          </label>
+          <label>Image</label>
+          <input type="file" onChange={updateFile} className="create_event_image-bar"/>
         </div>
         <div className="title-input">
           <label> Date </label>
