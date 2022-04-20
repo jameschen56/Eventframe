@@ -145,7 +145,7 @@
   margin-bottom: 10px;
   border-radius: 20px;
   height: 40px;
-  width: 60px;
+  width: 70px;
   text-align: start;
   padding-left: 10px;
   font-size: 15px;
@@ -153,6 +153,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  
 }
 
 .menu:hover {
@@ -211,3 +212,10 @@ dropdown > button:hover {
   border: none;
 }
 
+.user {
+  height: 32px;
+  width: 32px;
+  background-image: url("../../../public/images/user.png");
+  background-size: contain;
+  border-radius: 50%;
+}
