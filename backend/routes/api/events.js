@@ -5,7 +5,7 @@ const Op = Sequelize.Op;
 const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
-const { Event } = require('../../db/models')
+const { Event, Tag } = require('../../db/models')
 const {singlePublicFileUpload, singleMulterUpload} = require("../../awsS3")
 const router = express.Router()
 
@@ -116,5 +116,19 @@ router.get('/search/:searchString', asyncHandler(async (req, res) => {
   return res.json(events);
 
 }));
+
+// ------------------ events by categories -------------------
+router.get('/category/:categoryId', asyncHandler(async (req, res) => {
+
+  let categoryId = parseInt(req.params.categoryId, 10);
+  console.log('-----------------', categoryId)
+  let tags = await Tag.findAll({
+      where: {categoryId: categoryId},
+      include: {model: Event}
+  });
+
+  return res.json(tags.map(tag => tag.Event));
+}));
+
 
 module.exports = router

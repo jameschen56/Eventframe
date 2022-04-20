@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FaBorderNone } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllEvents } from "../../store/event";
+import { getAllEvents, filterEventsByCategoryId } from "../../store/event";
 import MyFooter from "../Footer";
 import "./Home.css";
 
@@ -27,7 +27,7 @@ const Home = () => {
         dispatch(getAllEvents());
     } else {
         return (
-          <div>None</div>
+          dispatch(filterEventsByCategoryId(categoryId))
         )
     }
     window.scroll({
@@ -60,11 +60,11 @@ const Home = () => {
             </h1>
             <div className="categoryMenu">
               <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(0)}} style={{cursor: 'pointer'}}> All Events</button>
-              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(4)}} style={{cursor: 'pointer'}}> Online </button>
+              <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(1)}} style={{cursor: 'pointer'}}> Online </button>
               <button id="free_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(2)}} style={{cursor: 'pointer'}}> Free </button>
-              <button id="food_drink_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(1)}} style={{cursor: 'pointer'}}> Food & Drink </button>
-              <button id="fashion_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(3)}} style={{cursor: 'pointer'}}> Fashion </button>
-              <button id="music_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(7)}} style={{cursor: 'pointer'}}> Music </button>
+              <button id="food_drink_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(3)}} style={{cursor: 'pointer'}}> Food & Drink </button>
+              <button id="fashion_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(4)}} style={{cursor: 'pointer'}}> Fashion </button>
+              <button id="music_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(5)}} style={{cursor: 'pointer'}}> Music </button>
             </div>
           </div>
           <div className="events-content">
