@@ -63,6 +63,7 @@ const Home = () => {
               <button className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(4)}} style={{cursor: 'pointer'}}> Online </button>
               <button id="free_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(2)}} style={{cursor: 'pointer'}}> Free </button>
               <button id="food_drink_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(1)}} style={{cursor: 'pointer'}}> Food & Drink </button>
+              <button id="fashion_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(3)}} style={{cursor: 'pointer'}}> Fashion </button>
               <button id="music_btn" className='categoryMenu_btn' onClick={() => {getEventsByCategoryId(7)}} style={{cursor: 'pointer'}}> Music </button>
             </div>
           </div>
