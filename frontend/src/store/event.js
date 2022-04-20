@@ -139,6 +139,15 @@ export const searchEvents = (searchString) => async dispatch => {
   }
 };
 
+export const filterEventsByCategoryId = (categoryId) => async dispatch => {
+  const response = await csrfFetch(`/api/events/category/${categoryId}`);
+
+  if (response.ok) {
+    const events = await response.json();
+    dispatch(filterEventsAction(events));
+  }
+};
+
 // ------- reducer ---------
 const eventsReducer = (state = {}, action) => {
   let newState;

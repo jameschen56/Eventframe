@@ -189,11 +189,15 @@
 }
 
 #food_drink_btn {
-  margin-left: 3px
+  margin-left: 13px
+}
+
+#fashion_btn {
+  margin-left: 24px
 }
 
 #music_btn {
-  margin-left: 5px;
+  margin-left: -3px;
 }
 /* others */
 

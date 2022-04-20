@@ -36,7 +36,8 @@ function ProfileButton({ user }) {
     <>
       <button className="menu" onClick={openMenu}>
         <i className="fas fa-bars"></i>
-        <i className="fas fa-user-circle"></i>
+        {/* <i className="fas fa-user-circle"></i> */}
+        <div className="user"></div>
       </button>
       {showMenu && (
         <ul className="dropdownList" onMouseLeave={closeMenu}>
