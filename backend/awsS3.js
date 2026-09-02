@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const Eventframe = "eventframe";
+const Eventframe = process.env.AWS_S3_BUCKET || "eventframe";
 
 const multer = require("multer");
 
@@ -22,6 +22,7 @@ const singlePublicFileUpload = async (file) => {
     Bucket: Eventframe,
     Key,
     Body: buffer,
+    ContentType: mimetype,
     ACL: "public-read",
   };
   const result = await s3.upload(uploadParams).promise();
@@ -68,7 +69,7 @@ const retrievePrivateFile = (key) => {
   let fileUrl;
   if (key) {
     fileUrl = s3.getSignedUrl("getObject", {
-      Bucket: NAME_OF_BUCKET,
+      Bucket: Eventframe,
       Key: key,
     });
   }

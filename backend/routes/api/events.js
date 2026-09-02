@@ -35,6 +35,14 @@ const validateEvent = [
     handleValidationErrors
 ]
 
+const validateNewEvent = [
+    check('title').trim().notEmpty().withMessage('Please provide an event title.'),
+    check('description').trim().notEmpty().withMessage('Please provide an event description.'),
+    check('eventDate').isISO8601().withMessage('Please provide a valid date.'),
+    check('location').trim().notEmpty().withMessage('Please provide a location.'),
+    handleValidationErrors
+]
+
 // ---------------- get all events -------------------
 router.get('/', asyncHandler(async(req, res) => {
     const events = await Event.findAll();
@@ -48,6 +56,10 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     let eventId = parseInt(req.params.id, 10);
     let event = await Event.findByPk(eventId);
 
+    if (!event) {
+        return res.status(404).json({ errors: ['Event not found.'] });
+    }
+
     return res.json(event);
 }));
 
@@ -57,34 +69,37 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
     const { id } = req.user;
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);
+    if (!eventToUpdate) {
+        return res.status(404).json({ errors: ['Event not found.'] });
+    }
     const userId = eventToUpdate.userId;
     const { title, description, imageUrl, eventDate, location} = req.body;
-    console.log('$$$$$$$$$$$$$$$$', eventDate)
-    if (id === userId) {
-        if (validateErrors.isEmpty()) {
-            const event = await eventToUpdate.update({title, description, imageUrl, eventDate, location});
-            await eventToUpdate.save()
-            return res.json(event)
-        } else {
-            res.json(validateErrors)
-        }
+    if (id !== userId) {
+        return res.status(403).json({ errors: ['Unauthorized.'] });
     }
+    if (validateErrors.isEmpty()) {
+        const event = await eventToUpdate.update({title, description, imageUrl, eventDate, location});
+        return res.json(event)
+    }
+    return res.status(400).json(validateErrors)
 }))
 
 // --------------------- create an event---------------------
-router.post('/new', singleMulterUpload("image"), asyncHandler(async (req, res) => {
-  console.log('11111111', req.body)
-  const { user_Id, title, description, eventDate, location } = req.body;
+router.post('/new', requireAuth, singleMulterUpload("image"), validateNewEvent, asyncHandler(async (req, res) => {
+  const { title, description, eventDate, location } = req.body;
+  if (!req.file) {
+      return res.status(400).json({ errors: ['Please provide an event image.'] });
+  }
   const imageUrl = await singlePublicFileUpload(req.file);
   const event = await Event.create({
-      userId: user_Id,
+      userId: req.user.id,
       title,
       description,
       imageUrl,
       eventDate,
       location
   });
-  return res.json(event);
+  return res.status(201).json(event);
 }));
 
 // ------------------ delete an event -------------------
@@ -92,13 +107,16 @@ router.delete('/delete/:id(\\d+)', requireAuth, asyncHandler(async function (req
   const eventId = parseInt(req.params.id, 10);
 
   const event = await Event.findByPk(eventId);
+  if (!event) {
+      return res.status(404).json({ errors: ['Event not found.'] });
+  }
   const userId = event.userId;
   
   const { id } = req.user;
   if (id === userId) {
       await event.destroy();
       return res.json("Success");
-  } else return res.status(401).json({ errors: ['Unauthorized.'] });
+  } else return res.status(403).json({ errors: ['Unauthorized.'] });
 }))
 
 // ------------------ search events -------------------
@@ -121,7 +139,6 @@ router.get('/search/:searchString', asyncHandler(async (req, res) => {
 router.get('/category/:categoryId', asyncHandler(async (req, res) => {
 
   let categoryId = parseInt(req.params.categoryId, 10);
-  console.log('-----------------', categoryId)
   let tags = await Tag.findAll({
       where: {categoryId: categoryId},
       include: {model: Event}

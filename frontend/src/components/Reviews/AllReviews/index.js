@@ -13,7 +13,6 @@ const AllReviews = () => {
   // const xxx = useSelector((state) => console.log('EEEEEE', state));
   const userId = useSelector((state) => state.session.user?.id);
   const reviews = useSelector((state) => state.review);
-  console.log('reviews', reviews)
   const event = useSelector((state) => state.event[id]);
   const history = useHistory();
   const reviewsArr = Object.values(reviews);
@@ -32,11 +31,9 @@ const AllReviews = () => {
   return (
     <div className="reviews-content">
       {reviewsArr?.map((review) => {
-        console.log('888888888888', `review-${review.id}`)
         if (review.eventId === event.id) {
           return (
             <div key={`review-${review.id}`} className="review-container">
-              {console.log('%%%%%%%%%%%',review)}
               <h3 className="user-name">{review.User.username}{":"}</h3>
               <div className="star-rating">
                 {Array(review.rating)

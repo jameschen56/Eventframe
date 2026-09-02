@@ -25,8 +25,6 @@ const EditEvent = ({ onClose }) => {
   const [location, setLocation] = useState(event?.setLocation || "");
   const [errorValidator, setErrorValidator] = useState([]);
 
-  console.log('^^^^^^^^^^^^', useState(event?.eventDate.slice(0,10) || "") )
-
   useEffect(() => {
     const errors = [];
     if (!title) errors.push("Please provide a title");

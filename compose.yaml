@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: eventframe
+      POSTGRES_PASSWORD: eventframe_dev
+      POSTGRES_DB: eventframe
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eventframe -d eventframe"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - eventframe-postgres:/var/lib/postgresql/data
+
+volumes:
+  eventframe-postgres:

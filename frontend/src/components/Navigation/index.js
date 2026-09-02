@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { useHistory } from "react-router-dom";
-import eventsReducer, { searchEvents } from "../../store/event";
+import { searchEvents } from "../../store/event";
 import logo from "../../assets/logo.png";
 import "./Navigation.css";
 
@@ -78,7 +78,7 @@ function Navigation({ isLoaded }) {
               style={{ cursor: "pointer" }}
               onClick={startSearch}
               alt=""
-              src="../images/search.png"
+              src="/images/search.png"
             ></img>
           </div>
         </div>

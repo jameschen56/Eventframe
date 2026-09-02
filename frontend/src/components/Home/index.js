@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { FaBorderNone } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllEvents, filterEventsByCategoryId } from "../../store/event";
@@ -91,7 +90,7 @@ const Home = () => {
                     </div>
                   {/* </div> */}
                 </Link>
-              )) :<div className="unmatched_events">Nothing matched your search!<img alt="unmatched_events" src="../images/no_events.png" width="60" height="60"></img></div> } 
+              )) :<div className="unmatched_events">Nothing matched your search!<img alt="unmatched_events" src="/images/no_events.png" width="60" height="60"></img></div> }
           </div>
         </div>
         <MyFooter />

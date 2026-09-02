@@ -6,7 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home"
-import SingleEvent from "./components/EventsPage/EventDetail ";
+import SingleEvent from "./components/EventsPage/EventDetail";
 import CreateEvent from "./components/EventsPage/CreateEvent";
 import Handle404 from "./components/Handle404";
 

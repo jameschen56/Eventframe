@@ -55,7 +55,6 @@ export const createReview = (review) => async dispatch => {
 };
 
 export const updateReview = (review) => async dispatch => {
-    console.log('SSSSSSSSSSSSS', review)
     const response = await csrfFetch(`/api/reviews/${review.reviewId}`, {
         method: 'PUT',
         body: JSON.stringify(review),

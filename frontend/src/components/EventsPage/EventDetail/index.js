@@ -32,13 +32,14 @@ const SingleEvent = () => {
     return null;
   }
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteSingleEvent(id)).catch(async (err) => {
-      const errors = await err.json();
-      // console.log('-----------------' , errors)
-    });
-    history.push("/");
+    try {
+      await dispatch(deleteSingleEvent(id));
+      history.push("/");
+    } catch (error) {
+      console.error('Unable to delete event', error);
+    }
   };
 
   // const overallRating = (eventReviews) => {
@@ -54,16 +55,12 @@ const SingleEvent = () => {
   const averageRating =
     ratings.reduce((a, b) => a + b, 0) / eventReviews.length;
 
-  const eventDate =
-    new Date(event.eventDate).toString().split(" ")[0] +
-    ", " +
-    new Date(event.eventDate).toString().split(" ")[1] +
-    " " +
-    new Date(event.eventDate).toString().split(" ")[2] +
-    " " +
-    new Date(event.eventDate).toString().split(" ")[3];
-  const xxxxxx = new Date(event.eventDate);
-  console.log("$$$$$$$$", xxxxxx);
+  const formattedEventDate = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${event.eventDate}T00:00:00Z`));
 
   // const eventDate = new Date(event.eventDate).toDateString()
   // console.log('#############', eventDate)
@@ -104,7 +101,7 @@ const SingleEvent = () => {
         <div className="event-details">
           <h3>
             <div>{event.title}</div>
-            <div>{(new Date(new Date((new Date(event.eventDate))).getTime() + 86400000)).toString().slice(4, 16)}</div>
+            <div>{formattedEventDate}</div>
           </h3>
           <div className="event-btn-container">
             {user_Id === event.userId && <EditEventModal />}

@@ -51,8 +51,8 @@ const CreateEvent = () => {
         if (res) history.push("/");
       })
       .catch(async (err) => {
-        const errors = await err.json();
-        // console.log('SSSSSSS' , errors)
+        const data = await err.json();
+        setErrorValidator(data.errors || ['Unable to create event.']);
       });
   };
 
@@ -119,7 +119,7 @@ const CreateEvent = () => {
         </div>
         <button
           className="cancel-event-button"
-          type="submit"
+          type="button"
           onClick={toCreateEvent}
           // disabled={errorValidator.length > 0}
         >
