@@ -34,8 +34,9 @@ Eventframe was built using the following technologies:
 
 ## Local development
 
-Requirements: Node.js 20–24 and PostgreSQL 17 (Render uses Node.js 22). A
-Docker Compose definition is also provided if PostgreSQL is not installed locally.
+Requirements: Node.js 20–24 and PostgreSQL 17 (Render uses Node.js 22). The
+included Docker Compose database uses host port `5433` to avoid colliding with
+an existing local PostgreSQL installation.
 
 1. Copy `backend/.env.example` to `backend/.env` and enter your local database
    credentials. AWS variables are only required for image uploads.
