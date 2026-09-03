@@ -11,9 +11,10 @@ This is a clone of [eventbrite](https://www.eventbrite.com/). Eventframe is an e
 
 ## Deployment
 
-The repository includes a Render Blueprint (`render.yaml`) that provisions the
-Node web service and PostgreSQL database together. Image uploads additionally
-require AWS credentials for the `eventframe` S3 bucket.
+The repository includes a Render Blueprint (`render.yaml`) for the Node web
+service. Production PostgreSQL is hosted on Neon and supplied through the
+`DATABASE_URL` environment variable. Image uploads additionally require AWS
+credentials for the `eventframe` S3 bucket.
 
 ## Technologies
 
@@ -62,14 +63,15 @@ production frontend bundle with `npm run build`.
 ## Deploying to Render
 
 1. Push the repository to GitHub.
-2. In Render, create a new Blueprint and select this repository.
-3. Render reads `render.yaml`, creates the web service and PostgreSQL database,
-   then prompts for the AWS access key, secret key, and region.
-4. After deployment, verify `/api/health`, Demo login, an event detail page, and
+2. Create a free Neon Postgres project and copy its pooled connection string.
+3. In Render, create a new Blueprint and select this repository.
+4. Render reads `render.yaml` and prompts for `DATABASE_URL`, the AWS access key,
+   secret key, and region. Use the Neon connection string for `DATABASE_URL`.
+5. After deployment, verify `/api/health`, Demo login, an event detail page, and
    an image upload.
 
-Render's free PostgreSQL plan expires after 30 days, so use a paid database for
-persistent production data.
+Neon's free plan currently provides 0.5 GB of storage and scales compute to zero
+when idle, which is appropriate for this portfolio deployment.
 
 ## Features
 
