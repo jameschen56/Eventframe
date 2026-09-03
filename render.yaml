@@ -6,7 +6,7 @@ services:
     region: singapore
     autoDeployTrigger: commit
     buildCommand: npm ci --prefix backend && npm ci --prefix frontend && npm run build --prefix frontend
-    startCommand: npm run db:migrate --prefix backend && npm run db:seed:all --prefix backend && node backend/bin/www
+    startCommand: DATABASE_URL=$DATABASE_URL_UNPOOLED npm run db:migrate --prefix backend && npm run db:seed:all --prefix backend && node backend/bin/www
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
@@ -14,6 +14,8 @@ services:
       - key: NODE_VERSION
         value: "22"
       - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_UNPOOLED
         sync: false
       - key: DB_SSL
         value: "true"
